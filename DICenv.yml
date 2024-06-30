@@ -1,0 +1,11 @@
+name: dic
+
+dependencies:
+  - python=3.11.7
+  - matplotlib=3.8.0
+  - numpy=1.26.4
+  - pip=23.3.1
+
+# Other useful modules
+#  - scikit-learn=1.2.2
+#  - pandas=2.1.4
