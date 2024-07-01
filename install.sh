@@ -31,7 +31,7 @@ conda activate dic
 pip install ReadIM
 ## Remove comment for example
 # Read and convert COLVIRM_01.im7 to png
-python3 RDIMCV.py --single-im7 COLVIRM_01.im7
+#python3 RDIMCV.py --single-im7 COLVIRM_01.im7
 # Another way to run same example
 #python3 RDIMCV.py --single-im7 COLVIRM_01
 ## End of remove comment
