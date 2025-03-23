@@ -46,3 +46,6 @@ To be completed
 
 ## Acknowledgement
 The access to the Super Computing Wales project's facilities (Hawk supercomputing nodes) through the project SWC 2233 at Cardiff University is greatly acknowledged. The encouragement and initial communications by Dr Alan Fleming, the original maintainer and developer of the ReadIM libraries, are greatly acknowledged. The enthusiastic involvement of the Open Source Software Student Chapter at Escuela Superior Politecnica del Litoral (Comunidad de Codigo Abierto, KOKOA-ESPOL, Ecuador) is thankfully recognised. The following developers at KOKOA-ESPOL contributed with either coding and/or testing: <developer 1>, <developer 2>.
+## History
+ Name   Year   Description
+ CAG    Mar23  Transferred ownership to KOKOA-ESPOL. Not in PYPI yet
