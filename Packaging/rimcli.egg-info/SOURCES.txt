@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+rimcli/CDDCV.py
+rimcli/RDDCV.py
+rimcli/RDIMCV.py
+rimcli/UDDCV.py
+rimcli/__init__.py
+rimcli.egg-info/PKG-INFO
+rimcli.egg-info/SOURCES.txt
+rimcli.egg-info/dependency_links.txt
+rimcli.egg-info/entry_points.txt
+rimcli.egg-info/requires.txt
+rimcli.egg-info/top_level.txt
