@@ -1,0 +1,11 @@
+name: rimenv
+
+dependencies:
+  - python>=3.8
+  - matplotlib>=3.6
+  - pip
+#  - readim #install by pip
+
+# Other useful modules
+#  - scikit-learn=1.2.2
+#  - pandas=2.1.4
