@@ -1,0 +1,3 @@
+docker start colvirm
+
+docker exec -it colvirm /bin/bash
