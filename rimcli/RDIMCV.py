@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[12]:
-
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
@@ -21,14 +17,14 @@
 # CAG  May24  Initial coding
 
 # Main function
-def main():
+def rcmain():
 ## Import modules
     # Import Read Dic Data for Computer Vision
-    import RDDCV
+    from rimcli.modcli import RDDCV
     # Import Convert Dic Data for Computer Vision
-    import CDDCV
+    from rimcli.modcli import CDDCV
     # Import utilities for DIC data
-    import UDDCV
+    from rimcli.modcli import UDDCV
 ## Rename module-mapped functions 
     # Function to read commmand line data
     RDCLI = RDDCV.RDCLI
@@ -49,5 +45,4 @@ def main():
 # Main method
 if __name__ == '__main__':
     # Execute main function
-    main()
-
+    rcmain()

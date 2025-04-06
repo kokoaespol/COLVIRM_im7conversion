@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
@@ -257,4 +253,3 @@ def SUSCR(string):
     string = string + uscr
     # Return
     return string
-

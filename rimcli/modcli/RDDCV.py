@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
@@ -26,7 +22,7 @@ def RDCLI():
     # Import python system data module
     import sys
     # Import utilities for DIC data
-    import UDDCV
+    from rimcli.modcli import UDDCV
 ## Rename module-mapped functions 
     # Python version
     pyvrs  = sys.version
@@ -87,7 +83,7 @@ class RFORM:
 def RINMD(rdmod):
 ## Import modules
     # Import utilities for DIC data
-    import UDDCV
+    from rimcli.modcli import UDDCV
 ## Rename module-mapped functions
     # Print list of strings of modes
     SLRMOD = UDDCV.SLRMOD
@@ -153,4 +149,3 @@ def RMDXM(rdmod,lspmd):
         print(ssmod)
     # Return
     return imode,error
-

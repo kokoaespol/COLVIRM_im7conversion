@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
@@ -23,7 +19,7 @@
 def CDMOD(clinpt):
 ## Import modules
     # Import Read Dic Data for Computer Vision
-    import RDDCV
+    from rimcli.modcli import RDDCV
 ## Rename read mode functions and classes
     # Extract command-line reading mode
     RDMOD = RDDCV.RDMOD
@@ -51,9 +47,9 @@ def CDMOD(clinpt):
 def CRDCV(imode,clinpt):
 ## Import modules
     # Import Read Dic Data for Computer Vision
-    import RDDCV
+    from rimcli.modcli import RDDCV
     # Import Utilities for Computer Vision
-    import UDDCV
+    from rimcli.modcli import UDDCV
 ## Rename module-mapped functions and classes
     # Class of supported modes
     RMDTP = RDDCV.RMDTP
@@ -89,7 +85,7 @@ def CRDCV(imode,clinpt):
 def CNORS(clinpt):
 ## Import modules
     # Import Utilities for Computer Vision
-    import UDDCV
+    from rimcli.modcli import UDDCV
 ## Rename module-mapped functions and classes
     # Extract file name from cli
     FNMCL = UDDCV.FNMCL
@@ -109,7 +105,7 @@ def CNORS(clinpt):
 def CIMLAY(iname,imname):
 ## Import modules
     # Import Utilities for Computer Vision
-    import UDDCV
+    from rimcli.modcli import UDDCV
 ## Rename module-mapped functions
     # Confirm image level entered
     SIMLAY = UDDCV.SIMLAY
@@ -153,7 +149,7 @@ def CIRRAY(iname):
 def CIRST(vrray):
 ## Import modules
     # Import Utilities for Computer Vision
-    import UDDCV
+    from rimcli.modcli import UDDCV
     # Scientific package of python
     import numpy as np
 ## Rename module-mapped functions
@@ -175,7 +171,7 @@ def CIRST(vrray):
 def CIPNG(imname,imtype,ncamr,vrray):
 ## Import modules
     # Utilities for DIC image and computer vision
-    import UDDCV 
+    from rimcli.modcli import UDDCV 
     # Plotting module
     import matplotlib.pyplot as plt
     # Colour map
@@ -213,7 +209,7 @@ def CIPNG(imname,imtype,ncamr,vrray):
         # Image name
         siname = SINAME(imname,imtype,icamr)
         # Save figure as png
-        SAVEFG(siname,
+        SAVEFG(siname+'.png',
                # Dots per inch
                dpi='figure',
                # Image format
@@ -233,4 +229,3 @@ def CIPNG(imname,imtype,ncamr,vrray):
     CLOSE('all')
     # Return
     return None
-

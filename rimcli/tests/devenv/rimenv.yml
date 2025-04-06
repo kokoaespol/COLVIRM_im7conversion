@@ -1,0 +1,8 @@
+name: rimenv
+
+dependencies:
+  - python>=3.8
+  - matplotlib>=3.6
+  - numpy<2.0
+  - pip
+# Install by pip: ReadIM

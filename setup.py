@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='rimcli',
-    version='0.0.4',
+    version='0.0.9',
     author="Carlos Xavier Azua-Gonzalez, Alan Fleming",
     author_email="Azua-GonzalezCX@cardiff.ac.uk",
     maintainer="KOKOA-ESPOL",
@@ -22,9 +22,9 @@ setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-        "numpy<2.0",
-        "matplotlib>=3.6",
-        "readim",
+        'numpy<2.0',
+        'matplotlib>=3.6',
+        'ReadIM'
     ],
     include_package_data=True,
     entry_points={

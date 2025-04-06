@@ -1,3 +1,29 @@
+Metadata-Version: 2.2
+Name: rimcli
+Version: 0.0.9
+Summary: cli-extension for rapid and easy use of ReadIM
+Author: Carlos Xavier Azua-Gonzalez, Alan Fleming
+Author-email: Azua-GonzalezCX@cardiff.ac.uk
+Maintainer: KOKOA-ESPOL
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy<2.0
+Requires-Dist: matplotlib>=3.6
+Requires-Dist: ReadIM
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: maintainer
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 ---
 Title: 'RIMCLI: A Python tool for image format conversion of Digital Image Correlation using the command-line'
 

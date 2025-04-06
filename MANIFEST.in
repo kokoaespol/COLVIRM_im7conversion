@@ -1,0 +1,2 @@
+recursive-include rimcli/tests/data *
+recursive-include rimcli/tests/devenv *
