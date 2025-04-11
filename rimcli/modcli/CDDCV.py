@@ -162,11 +162,12 @@ def CIRRAY(iname):
 # Function to show image array settings
 def CIRST(vrray):
     ## Import modules
-    # Import Utilities for Computer Vision
-    from rimcli.modcli import UDDCV
 
     # Scientific package of python
     import numpy as np
+
+    # Import Utilities for Computer Vision
+    from rimcli.modcli import UDDCV
 
     ## Rename module-mapped functions
     # Extract image array settings
@@ -187,14 +188,15 @@ def CIRST(vrray):
 # Function to save image array as png
 def CIPNG(imname, imtype, ncamr, vrray):
     ## Import modules
-    # Utilities for DIC image and computer vision
-    from rimcli.modcli import UDDCV
 
     # Plotting module
     import matplotlib.pyplot as plt
 
     # Colour map
     import matplotlib.cm as cm
+
+    # Utilities for DIC image and computer vision
+    from rimcli.modcli import UDDCV
 
     ## Rename module-mapped functions and classes
     # String to confirm camera in use
