@@ -2,61 +2,66 @@
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
-#*PYTHON MODULE
+# *PYTHON MODULE
 # RDDCV.py
-#*PURPOSE
+# *PURPOSE
 # Read DIC data for computer vision analysis
-#*ACRONYM
+# *ACRONYM
 # Read_Dic_Data_Computer_Vision
-#*DESCRIPTION
+# *DESCRIPTION
 # Functions to read DIC data, extraction mode and
 # incoming information from command line relevant
 # for image refinement and Computer Vision
-#*HISTORY
+# *HISTORY
 # NAME DATE   DESCRIPTION
 # CAG  Jun24  Initial coding
 
+
 # Function to Read Data from Command Line Interface
 def RDCLI():
-## Import modules
+    ## Import modules
     # Import python system data module
     import sys
+
     # Import utilities for DIC data
     from rimcli.modcli import UDDCV
-## Rename module-mapped functions 
+
+    ## Rename module-mapped functions
     # Python version
-    pyvrs  = sys.version
+    pyvrs = sys.version
     # CLI input from interpreter
     clinpt = sys.argv
     # Extract program name
-    SNAME  = UDDCV.SNAME
+    SNAME = UDDCV.SNAME
     # Show python version
-    SPYVR  = UDDCV.SPYVR
+    SPYVR = UDDCV.SPYVR
     # Confirm program running
-    SPGRN  = UDDCV.SPGRN
+    SPGRN = UDDCV.SPGRN
     # String for insufficient data input
-    SINDT  = UDDCV.SINDT
+    SINDT = UDDCV.SINDT
     # Extract minimum length of input data
-    MINL   = RFORM.MINL
-## Initialise error flag    
-    error  = False
-## Extract python and command line data
+    MINL = RFORM.MINL
+    ## Initialise error flag
+    error = False
+    ## Extract python and command line data
     # Extract program name
-    prgnm  = SNAME(clinpt)
-## Show python and command line data
+    prgnm = SNAME(clinpt)
+    ## Show python and command line data
     # Show python version
     SPYVR(pyvrs)
     # Confirm program in use
     SPGRN(prgnm)
-## Check for admissible clinpt
+    ## Check for admissible clinpt
     # Length of input data
     lclinp = len(clinpt)
     # Minimum input data
     mincli = MINL
-## Insufficient minimum data
-    if lclinp < mincli: error = SINDT()
+    ## Insufficient minimum data
+    if lclinp < mincli:
+        error = SINDT()
     # Return
-    return error,clinpt
+    return error, clinpt
+
 
 # Function to Read Mode for image conversion
 def RDMOD(clinpt):
@@ -65,33 +70,35 @@ def RDMOD(clinpt):
     # Return
     return rdmod
 
+
 # Class to store reading mode types
 class RMDTP:
     # List of image reading modes, ends with default
-    LIST   = ["--single-im7",
-              "--default"   ]
+    LIST = ["--single-im7", "--default"]
     # Output string for each mode, ends with default
-    SSTART = ["***Single-file mode***"          ,
-              "***Single-file mode (default)***"]
+    SSTART = ["***Single-file mode***", "***Single-file mode (default)***"]
+
 
 # Class to store calling format
 class RFORM:
     # Minimum number of command-line inputs
     MINL = 3
 
+
 # Function to confirm invalid mode
 def RINMD(rdmod):
-## Import modules
+    ## Import modules
     # Import utilities for DIC data
     from rimcli.modcli import UDDCV
-## Rename module-mapped functions
+
+    ## Rename module-mapped functions
     # Print list of strings of modes
     SLRMOD = UDDCV.SLRMOD
     # String to confirm invalid mode
-    SINMD  = UDDCV.SINMD
+    SINMD = UDDCV.SINMD
     # List of supported modes
-    LIST   = RMDTP.LIST
-## Confirm invalid and available modes
+    LIST = RMDTP.LIST
+    ## Confirm invalid and available modes
     # Extract list of supported modes
     lspmd = LIST
     # Confirm invalid mode
@@ -101,13 +108,14 @@ def RINMD(rdmod):
     # Return
     return error
 
+
 # Function to extract the string of each mode
 def RMDXT(lspmd):
     # Length of supported mode list
     nmode = len(lspmd)
     # Last mode position: default
     dmodp = nmode - 1
-## Available modes
+    ## Available modes
     # First mode: single file
     smode = lspmd[0]
     # Next mode: position [1] reserved
@@ -115,18 +123,19 @@ def RMDXT(lspmd):
     # Last mode: default
     dmode = lspmd[dmodp]
     # Return
-    return smode,dmode,dmodp
+    return smode, dmode, dmodp
+
 
 # Function to extract welcome message for mode
-def RMDXM(rdmod,lspmd):
-## Rename mapped functions and classes
+def RMDXM(rdmod, lspmd):
+    ## Rename mapped functions and classes
     # Strings of welcome message for each mode
     SSTART = RMDTP.SSTART
-## Initialise error flag
+    ## Initialise error flag
     error = False
-## Mode detection
+    ## Mode detection
     # Extract mode strings & default mode position
-    smode,dmode,dmodp = RMDXT(lspmd)
+    smode, dmode, dmodp = RMDXT(lspmd)
     # Set mode number to an initial high value
     imode = 1000
     # Reading image as single mode
@@ -148,4 +157,4 @@ def RMDXM(rdmod,lspmd):
         # Welcome message to the current mode
         print(ssmod)
     # Return
-    return imode,error
+    return imode, error
