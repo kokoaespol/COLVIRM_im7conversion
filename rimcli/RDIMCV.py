@@ -21,13 +21,9 @@
 def rcmain():
     ## Import modules
     # Import Read Dic Data for Computer Vision
-    from rimcli.modcli import RDDCV
-
-    # Import Convert Dic Data for Computer Vision
-    from rimcli.modcli import CDDCV
-
     # Import utilities for DIC data
-    from rimcli.modcli import UDDCV
+    # Import Convert Dic Data for Computer Vision
+    from rimcli.modcli import CDDCV, RDDCV, UDDCV
 
     ## Rename module-mapped functions
     # Function to read commmand line data

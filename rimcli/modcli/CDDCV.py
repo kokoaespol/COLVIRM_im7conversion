@@ -51,10 +51,8 @@ def CDMOD(clinpt):
 def CRDCV(imode, clinpt):
     ## Import modules
     # Import Read Dic Data for Computer Vision
-    from rimcli.modcli import RDDCV
-
     # Import Utilities for Computer Vision
-    from rimcli.modcli import UDDCV
+    from rimcli.modcli import RDDCV, UDDCV
 
     ## Rename module-mapped functions and classes
     # Class of supported modes
@@ -190,10 +188,9 @@ def CIPNG(imname, imtype, ncamr, vrray):
     ## Import modules
 
     # Plotting module
-    import matplotlib.pyplot as plt
-
     # Colour map
     import matplotlib.cm as cm
+    import matplotlib.pyplot as plt
 
     # Utilities for DIC image and computer vision
     from rimcli.modcli import UDDCV
