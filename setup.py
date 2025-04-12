@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-import sys
-
 from setuptools import find_packages, setup
 
 with open("README.md", "r") as fh:

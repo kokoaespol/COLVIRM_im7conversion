@@ -6,17 +6,17 @@
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
-#*PYTHON PROGRAM
+# *PYTHON PROGRAM
 # RDIMCV.py
-#*PURPOSE
+# *PURPOSE
 # Read a DIC image for computer vision analysis
-#*ACRONYM
+# *ACRONYM
 # Read_Dic_IMage_Computer_Vision
-#*DESCRIPTION
+# *DESCRIPTION
 # Read a set of Digital-Image-Correlation (DIC) images.
 # Input is proprietary format im7, which gets converted
 # to another formats more suitable for Computer Vision
-#*HISTORY
+# *HISTORY
 # NAME DATE   DESCRIPTION
 # CAG  May24  Initial coding
 

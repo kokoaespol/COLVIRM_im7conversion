@@ -25,11 +25,11 @@
 def SEXIT(error, clinpt):
     # Extract program name
     prgnm = SNAME(clinpt)
-    ## Program run not completed
-    if error == True:
+    # Program run not completed
+    if error:
         # Exit string on aborted run
         print(prgnm, "run aborted!")
-    ## Program run completed
+    # Program run completed
     else:
         # Exit string on successful run
         print(prgnm, "run successfully completed!")
@@ -99,17 +99,17 @@ def SINMD(rdmod):
 
 # Function to get im7 file name from cli
 def FNMCL(clinpt):
-    ## Rename module-mapped classes
+    # Rename module-mapped classes
     # Extract length of .im7
     LIM7 = FMIM7.LIM7
     # Extract .im7
     FRIM7 = FMIM7.FRIM7
-    ## Extract file name
+    # Extract file name
     # Record File name
     imname = clinpt[2]
     # Length of file name
     lname = len(imname)
-    ## Autodetection of file format
+    # Autodetection of file format
     # Length of .im7 as string
     lim7 = LIM7
     # Start position of .im7 string
@@ -140,18 +140,18 @@ class FMIM7:
 
 # Function to detect inexisting file
 def FNFND(iname):
-    ## Import modules
+    # Import modules
     # Python-OS module
     import os
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Extract path
     PATH = os.path
     # Detect existing file
     FEXST = PATH.isfile
-    ## Initialise error flag
+    # Initialise error flag
     error = False
-    ## Detect if file exists
+    # Detect if file exists
     # Flag to confirm file exists
     ffnd = FEXST(iname)
     # File not found
@@ -176,21 +176,21 @@ def SIMLAY(iname):
 
 # Function to show image array settings
 def SIRST(ncamr, pxlr, pxlc, imtype):
-    ## Settings: Number of cameras
+    # Settings: Number of cameras
     # String of number of cameras
     sncamr = "Number of cameras in DIC:"
     # Append space before string
     sncamr = SDEMS(sncamr)
     # Show number of cameras
     print(sncamr, ncamr)
-    ## Settings: Number of pixels
+    # Settings: Number of pixels
     # String of number of pixels
     spxl = "Camera pixel resolution:"
     # Append space before string
     spxl = SDEMS(spxl)
     # Show number of pixels
     print(spxl, pxlr, "x", pxlc)
-    ## Settings: Image channel type
+    # Settings: Image channel type
     # String of image type
     sityp = "Image channel type:"
     # Append space before string
@@ -241,7 +241,7 @@ def SINAME(imname, imtype, icamr):
     sitype = str(imtype)
     # Camera number as string
     sicamr = str(icamr)
-    ## Add type and camera number to image name
+    # Add type and camera number to image name
     # Add underscore to image name
     siname = SUSCR(imname)
     # Add image type

@@ -18,11 +18,11 @@
 
 # Function to convert Dic image to given mode
 def CDMOD(clinpt):
-    ## Import modules
+    # Import modules
     # Import Read Dic Data for Computer Vision
     from rimcli.modcli import RDDCV
 
-    ## Rename read mode functions and classes
+    # Rename read mode functions and classes
     # Extract command-line reading mode
     RDMOD = RDDCV.RDMOD
     # Class of supported modes
@@ -31,16 +31,16 @@ def CDMOD(clinpt):
     RMDXM = RDDCV.RMDXM
     # List of supported modes
     LIST = RMDTP.LIST
-    ## Initialise error flag
+    # Initialise error flag
     error = False
-    ## DIC image reading modes
+    # DIC image reading modes
     # Read mode
     rdmod = RDMOD(clinpt)
     # Extract list of supported modes
     lspmd = LIST
     # Detect mode number
     imode, error = RMDXM(rdmod, lspmd)
-    ## Operate on image using detected mode
+    # Operate on image using detected mode
     if not error:
         error = CRDCV(imode, clinpt)
     # Return
@@ -49,12 +49,12 @@ def CDMOD(clinpt):
 
 # Function to convert and refine images per detected mode
 def CRDCV(imode, clinpt):
-    ## Import modules
+    # Import modules
     # Import Read Dic Data for Computer Vision
     # Import Utilities for Computer Vision
     from rimcli.modcli import RDDCV, UDDCV
 
-    ## Rename module-mapped functions and classes
+    # Rename module-mapped functions and classes
     # Class of supported modes
     RMDTP = RDDCV.RMDTP
     # Declare invalid mode
@@ -63,9 +63,9 @@ def CRDCV(imode, clinpt):
     RMDXT = RDDCV.RMDXT
     # List of supported modes
     LIST = RMDTP.LIST
-    ## Initialise error flag
+    # Initialise error flag
     error = False
-    ## Load supported modes
+    # Load supported modes
     # Extract list of supported modes
     lspmd = LIST
     # Length of supported mode list
@@ -88,16 +88,16 @@ def CRDCV(imode, clinpt):
 
 # Function to operate on single im7 image, no refinement
 def CNORS(clinpt):
-    ## Import modules
+    # Import modules
     # Import Utilities for Computer Vision
     from rimcli.modcli import UDDCV
 
-    ## Rename module-mapped functions and classes
+    # Rename module-mapped functions and classes
     # Extract file name from cli
     FNMCL = UDDCV.FNMCL
     # Detect if file not found
     FNFND = UDDCV.FNFND
-    ## Extract file name, if existing
+    # Extract file name, if existing
     # File name (with & without format)
     iname, imname = FNMCL(clinpt)
     # Switch on error if file not found
@@ -111,14 +111,14 @@ def CNORS(clinpt):
 
 # Function to operate once file confirmed to exist
 def CIMLAY(iname, imname):
-    ## Import modules
+    # Import modules
     # Import Utilities for Computer Vision
     from rimcli.modcli import UDDCV
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Confirm image level entered
     SIMLAY = UDDCV.SIMLAY
-    ## Enter image level
+    # Enter image level
     # Confirm im7 image level entered
     SIMLAY(iname)
     # Import im7 image as (python) array
@@ -135,18 +135,18 @@ def CIMLAY(iname, imname):
 
 # Function to extract image as array
 def CIRRAY(iname):
-    ## Import modules
+    # Import modules
     # Read im7 image to array
     import ReadIM
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Read image with extra output
     READX = ReadIM.extra
     # Read image buffer and attributes
     RBFAT = READX.get_Buffer_andAttributeList
     # Read image buffer as array
     RBFAR = READX.buffer_as_array
-    ## Extract image attributes and buffer as array
+    # Extract image attributes and buffer as array
     # Extract image attributes and buffer
     vbuff, vatts = RBFAT(iname)
     # Convert image buffer into python array
@@ -159,7 +159,7 @@ def CIRRAY(iname):
 
 # Function to show image array settings
 def CIRST(vrray):
-    ## Import modules
+    # Import modules
 
     # Scientific package of python
     import numpy as np
@@ -167,12 +167,12 @@ def CIRST(vrray):
     # Import Utilities for Computer Vision
     from rimcli.modcli import UDDCV
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Extract image array settings
     SIRST = UDDCV.SIRST
     # Extract shape of python array
     SHAPE = np.shape
-    ## Extract image characteristics
+    # Extract image characteristics
     # Image camera and pixel numbers
     ncamr, pxlr, pxlc = SHAPE(vrray)
     # Image-channel(s) data type
@@ -185,7 +185,7 @@ def CIRST(vrray):
 
 # Function to save image array as png
 def CIPNG(imname, imtype, ncamr, vrray):
-    ## Import modules
+    # Import modules
 
     # Plotting module
     # Colour map
@@ -195,7 +195,7 @@ def CIPNG(imname, imtype, ncamr, vrray):
     # Utilities for DIC image and computer vision
     from rimcli.modcli import UDDCV
 
-    ## Rename module-mapped functions and classes
+    # Rename module-mapped functions and classes
     # String to confirm camera in use
     SCMRA = UDDCV.SCMRA
     # Image name with type and camera number
@@ -212,7 +212,7 @@ def CIPNG(imname, imtype, ncamr, vrray):
     SAVEFG = plt.savefig
     # Colour map: Greys red
     GREYSR = cm.Greys_r
-    ## Save image in another format
+    # Save image in another format
     # List of camera IDs
     lcamr = range(0, ncamr)
     # Loop over cameras

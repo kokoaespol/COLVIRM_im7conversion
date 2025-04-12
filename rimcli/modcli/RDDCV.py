@@ -19,14 +19,14 @@
 
 # Function to Read Data from Command Line Interface
 def RDCLI():
-    ## Import modules
+    # Import modules
     # Import python system data module
     import sys
 
     # Import utilities for DIC data
     from rimcli.modcli import UDDCV
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Python version
     pyvrs = sys.version
     # CLI input from interpreter
@@ -41,22 +41,22 @@ def RDCLI():
     SINDT = UDDCV.SINDT
     # Extract minimum length of input data
     MINL = RFORM.MINL
-    ## Initialise error flag
+    # Initialise error flag
     error = False
-    ## Extract python and command line data
+    # Extract python and command line data
     # Extract program name
     prgnm = SNAME(clinpt)
-    ## Show python and command line data
+    # Show python and command line data
     # Show python version
     SPYVR(pyvrs)
     # Confirm program in use
     SPGRN(prgnm)
-    ## Check for admissible clinpt
+    # Check for admissible clinpt
     # Length of input data
     lclinp = len(clinpt)
     # Minimum input data
     mincli = MINL
-    ## Insufficient minimum data
+    # Insufficient minimum data
     if lclinp < mincli:
         error = SINDT()
     # Return
@@ -87,18 +87,18 @@ class RFORM:
 
 # Function to confirm invalid mode
 def RINMD(rdmod):
-    ## Import modules
+    # Import modules
     # Import utilities for DIC data
     from rimcli.modcli import UDDCV
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Print list of strings of modes
     SLRMOD = UDDCV.SLRMOD
     # String to confirm invalid mode
     SINMD = UDDCV.SINMD
     # List of supported modes
     LIST = RMDTP.LIST
-    ## Confirm invalid and available modes
+    # Confirm invalid and available modes
     # Extract list of supported modes
     lspmd = LIST
     # Confirm invalid mode
@@ -115,7 +115,7 @@ def RMDXT(lspmd):
     nmode = len(lspmd)
     # Last mode position: default
     dmodp = nmode - 1
-    ## Available modes
+    # Available modes
     # First mode: single file
     smode = lspmd[0]
     # Next mode: position [1] reserved
@@ -128,12 +128,12 @@ def RMDXT(lspmd):
 
 # Function to extract welcome message for mode
 def RMDXM(rdmod, lspmd):
-    ## Rename mapped functions and classes
+    # Rename mapped functions and classes
     # Strings of welcome message for each mode
     SSTART = RMDTP.SSTART
-    ## Initialise error flag
+    # Initialise error flag
     error = False
-    ## Mode detection
+    # Mode detection
     # Extract mode strings & default mode position
     smode, dmode, dmodp = RMDXT(lspmd)
     # Set mode number to an initial high value

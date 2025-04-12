@@ -23,7 +23,7 @@
 
 # Main function
 def rcmain():
-    ## Import modules
+    # Import modules
     # Import Read Dic Data for Computer Vision
     from rimcli import RDDCV
 
@@ -33,21 +33,21 @@ def rcmain():
     # Import utilities for DIC data
     from rimcli import UDDCV
 
-    ## Rename module-mapped functions
+    # Rename module-mapped functions
     # Function to read commmand line data
     RDCLI = RDDCV.RDCLI
     # Function to convert Dic image to given mode
     CDMOD = CDDCV.CDMOD
     # Function to show exit string
     SEXIT = UDDCV.SEXIT
-    ## Extract input data
+    # Extract input data
     # Extract interpreter and command line input
     error, clinpt = RDCLI()
-    ## Convert DIC images
+    # Convert DIC images
     # Convert to CLI-based mode
     if not error:
         error = CDMOD(clinpt)
-    ## Terminate run
+    # Terminate run
     # String on exit
     SEXIT(error, clinpt)
 
