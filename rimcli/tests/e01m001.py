@@ -13,8 +13,7 @@ def test(file):
     imgdat = "B00001.im7"
     image_path = base_dir / imgdat
     print("Testing started in ", image_path)
-    result = subprocess.run(
-        ["rim-cli", "--single-im7", str(image_path)], shell=True)
+    result = subprocess.run(["rim-cli", "--single-im7", str(image_path)], shell=True)
 
     if result.returncode != 0:
         print(f"Error executing command: {result.stderr}")
