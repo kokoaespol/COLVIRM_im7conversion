@@ -4,10 +4,12 @@
 # e01m001: <e>xample of testing category <01> for i<m>7 images. Test
 # number <0001>
 
+
 # Function to test rum-cli functionality
 def test(file):
     # Import pathway manipulation module
     import pathlib
+
     # Import subprocess execution module
     import subprocess
 
