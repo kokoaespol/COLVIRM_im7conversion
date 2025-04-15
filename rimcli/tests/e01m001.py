@@ -7,11 +7,11 @@
 
 # Function to test rum-cli functionality
 def test(file):
-    # Import pathway manipulation module
-    import pathlib
-
     # Import subprocess execution module
     import subprocess
+
+    # Import pathway manipulation module
+    import pathlib
 
     # Construct full path to image
     base_dir = pathlib.Path(file).parent
