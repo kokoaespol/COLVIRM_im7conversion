@@ -1,0 +1,4 @@
+name: rimbase
+
+dependencies:
+  - python>=3.8
