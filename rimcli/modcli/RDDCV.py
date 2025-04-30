@@ -53,76 +53,39 @@ def RDMOD(clinpt):
     """
     return clinpt[1]
 
-# Function to confirm invalid mode
 def RINMD(rdmod):
-    # Import modules
-    # Import utilities for DIC data
-    from rimcli.modcli import UDDCV
-
-    # Rename module-mapped functions
-    # Print list of strings of modes
-    SLRMOD = UDDCV.SLRMOD
-    # String to confirm invalid mode
-    SINMD = UDDCV.SINMD
-    # List of supported modes
-    LIST = RMDTP.LIST
-    # Confirm invalid and available modes
-    # Extract list of supported modes
-    lspmd = LIST
-    # Confirm invalid mode
-    error = SINMD(rdmod)
-    # Print list of supported modes
-    SLRMOD(lspmd)
-    # Return
-    return error
+    """
+    Function to confirm invalid mode.
+    """
+    UDDCV.SINMD(rdmod)
+    UDDCV.SLRMOD(RMDTP.LIST)
+    return True
 
 
-# Function to extract the string of each mode
 def RMDXT(lspmd):
-    # Length of supported mode list
-    nmode = len(lspmd)
-    # Last mode position: default
-    dmodp = nmode - 1
-    # Available modes
-    # First mode: single file
-    smode = lspmd[0]
-    # Next mode: position [1] reserved
-    pass
-    # Last mode: default
-    dmode = lspmd[dmodp]
-    # Return
-    return smode, dmode, dmodp
+    """
+    Function to extract the string of each mode.
+    """
+    dmodp = len(lspmd) - 1
+    return lspmd[0], lspmd[dmodp], dmodp
 
 
-# Function to extract welcome message for mode
 def RMDXM(rdmod, lspmd):
-    # Rename mapped functions and classes
-    # Strings of welcome message for each mode
-    SSTART = RMDTP.SSTART
-    # Initialise error flag
-    error = False
-    # Mode detection
-    # Extract mode strings & default mode position
+    """
+    Function to extract welcome message for mode.
+    """
     smode, dmode, dmodp = RMDXT(lspmd)
-    # Set mode number to an initial high value
     imode = 1000
-    # Reading image as single mode
+    error = False
+
     if rdmod == smode:
-        # Single mode position
         imode = 0
-    # Reading image as default mode
     elif rdmod == dmode:
-        # Default mode position
         imode = dmodp
-    # Reading mode invalid
     else:
-        # Switch on flag for invalid mode
         error = RINMD(rdmod)
-    # Valid mode from input
+
     if not error:
-        # String for starting the mode
-        ssmod = SSTART[imode]
-        # Welcome message to the current mode
-        print(ssmod)
-    # Return
+        print(RMDTP.SSTART[imode])
+
     return imode, error
