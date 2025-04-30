@@ -2,88 +2,56 @@
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
-# *PYTHON MODULE
-# RDDCV.py
-# *PURPOSE
-# Read DIC data for computer vision analysis
-# *ACRONYM
-# Read_Dic_Data_Computer_Vision
-# *DESCRIPTION
-# Functions to read DIC data, extraction mode and
-# incoming information from command line relevant
-# for image refinement and Computer Vision
-# *HISTORY
-# NAME DATE   DESCRIPTION
-# CAG  Jun24  Initial coding
+
+"""
+RDDCV.py
+Purpose: Read DIC data for computer vision analysis
+Acronym: Read_Dic_Data_Computer_Vision
+Description: Functions to read DIC data, extraction mode, and
+incoming information from the command line relevant
+for image refinement and Computer Vision.
+"""
+
+import sys
+from rimcli.modcli import UDDCV
+
+
+class RMDTP:
+    """Class to store reading mode types."""
+    LIST = ["--single-im7", "--default"]
+    SSTART = ["***Single-file mode***", "***Single-file mode (default)***"]
+
+
+class RFORM:
+    """Class to store calling format."""
+    MINL = 3
+
 
 
 # Function to Read Data from Command Line Interface
 def RDCLI():
-    # Import modules
-    # Import python system data module
-    import sys
-
-    # Import utilities for DIC data
-    from rimcli.modcli import UDDCV
-
-    # Rename module-mapped functions
-    # Python version
-    pyvrs = sys.version
-    # CLI input from interpreter
-    clinpt = sys.argv
+    """
+    Function to read data from the command line interface.
+    """
     # Extract program name
-    SNAME = UDDCV.SNAME
-    # Show python version
-    SPYVR = UDDCV.SPYVR
-    # Confirm program running
-    SPGRN = UDDCV.SPGRN
-    # String for insufficient data input
-    SINDT = UDDCV.SINDT
-    # Extract minimum length of input data
-    MINL = RFORM.MINL
-    # Initialise error flag
-    error = False
-    # Extract python and command line data
-    # Extract program name
-    prgnm = SNAME(clinpt)
-    # Show python and command line data
-    # Show python version
-    SPYVR(pyvrs)
-    # Confirm program in use
-    SPGRN(prgnm)
-    # Check for admissible clinpt
-    # Length of input data
-    lclinp = len(clinpt)
-    # Minimum input data
-    mincli = MINL
-    # Insufficient minimum data
-    if lclinp < mincli:
-        error = SINDT()
-    # Return
-    return error, clinpt
+    prgnm = UDDCV.SNAME(sys.argv)
+    # Show Python version and confirm program running
+    UDDCV.SPYVR(sys.version)
+    UDDCV.SPGRN(prgnm)
+
+    # Check for sufficient input data
+    if len(sys.argv) < RFORM.MINL:
+        error = UDDCV.SINDT()
+        return error, sys.argv
+
+    return False, sys.argv
 
 
-# Function to Read Mode for image conversion
 def RDMOD(clinpt):
-    # Reading mode
-    rdmod = clinpt[1]
-    # Return
-    return rdmod
-
-
-# Class to store reading mode types
-class RMDTP:
-    # List of image reading modes, ends with default
-    LIST = ["--single-im7", "--default"]
-    # Output string for each mode, ends with default
-    SSTART = ["***Single-file mode***", "***Single-file mode (default)***"]
-
-
-# Class to store calling format
-class RFORM:
-    # Minimum number of command-line inputs
-    MINL = 3
-
+    """
+    Function to read mode for image conversion.
+    """
+    return clinpt[1]
 
 # Function to confirm invalid mode
 def RINMD(rdmod):
