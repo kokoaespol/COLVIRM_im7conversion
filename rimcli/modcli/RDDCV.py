@@ -18,20 +18,26 @@ from rimcli.modcli import UDDCV
 
 class RMDTP:
     """Class to store reading mode types."""
+
     LIST = ["--single-im7", "--default"]
     SSTART = ["***Single-file mode***", "***Single-file mode (default)***"]
 
 
 class RFORM:
     """Class to store calling format."""
-    MINL = 3
 
+    MINL = 3
 
 
 # Function to Read Data from Command Line Interface
 def RDCLI():
     """
     Function to read data from the command line interface.
+
+    input: None
+
+    output: error - boolean indicating if there is an error
+            sys.argv - command line arguments
     """
     # Extract program name
     prgnm = UDDCV.SNAME(sys.argv)
@@ -50,12 +56,21 @@ def RDCLI():
 def RDMOD(clinpt):
     """
     Function to read mode for image conversion.
+
+    input: clinpt - command line input
+
+    output: clinpt[1] - mode for image conversion
     """
     return clinpt[1]
+
 
 def RINMD(rdmod):
     """
     Function to confirm invalid mode.
+
+    input: rdmod - mode for image conversion
+
+    output: error - boolean indicating if mode is invalid
     """
     UDDCV.SINMD(rdmod)
     UDDCV.SLRMOD(RMDTP.LIST)
@@ -65,6 +80,12 @@ def RINMD(rdmod):
 def RMDXT(lspmd):
     """
     Function to extract the string of each mode.
+
+    input: lspmd - list of modes
+
+    output: lspmd[0] - single mode
+            lspmd[dmodp] - default mode
+            dmodp - index of the last mode
     """
     dmodp = len(lspmd) - 1
     return lspmd[0], lspmd[dmodp], dmodp
@@ -73,6 +94,12 @@ def RMDXT(lspmd):
 def RMDXM(rdmod, lspmd):
     """
     Function to extract welcome message for mode.
+
+    input: rdmod - mode for image conversion
+           lspmd - list of modes
+
+    output: imode - index of the mode
+            error - boolean indicating if mode is invalid
     """
     smode, dmode, dmodp = RMDXT(lspmd)
     imode = 1000
