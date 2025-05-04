@@ -2,15 +2,20 @@
 
 # Copyright (C) COLVIRM project 2024
 # This project is licensed under the terms of the MIT license.
-
-"""
-RDDCV.py
-Purpose: Read DIC data for computer vision analysis
-Acronym: Read_Dic_Data_Computer_Vision
-Description: Functions to read DIC data, extraction mode, and
-incoming information from the command line relevant
-for image refinement and Computer Vision.
-"""
+# *PYTHON MODULE
+# RDDCV.py
+# *PURPOSE
+# Read DIC data for computer vision analysis
+# *ACRONYM
+# Read_Dic_Data_Computer_Vision
+# *DESCRIPTION
+# Handles command-line input to select and validate 
+# DIC image processing modes. Provides mode detection,
+# user messaging, and input verification for image 
+# refinement workflows in computer vision.
+# *HISTORY
+# NAME DATE   DESCRIPTION
+# CAG  Jun24  Initial coding
 
 import sys
 from rimcli.modcli import UDDCV
