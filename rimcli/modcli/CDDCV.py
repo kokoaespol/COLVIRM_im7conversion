@@ -43,7 +43,7 @@ def CDMOD(clinpt):
        """
 
     rdmod = RDDCV.RDMOD(clinpt)
-    lspmd = RDDCV.RMDTP.LIST
+    lspmd = RDDCV.RMDTP.IMAGE_READING_MODE_TYPES
     imode, error = RDDCV.RMDXM(rdmod, lspmd)
 
     if not error:
@@ -65,7 +65,7 @@ def CRDCV(imode, rdmod, clinpt):
          bool: True if an error occurred, False otherwise
      """
 
-    supported_modes = RDDCV.RMDTP.LIST
+    supported_modes = RDDCV.RMDTP.IMAGE_READING_MODE_TYPES
     default_mode = RDDCV.RMDXT(supported_modes)[2]
     error = False
 

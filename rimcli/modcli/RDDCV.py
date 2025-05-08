@@ -13,20 +13,14 @@ for image refinement and Computer Vision.
 """
 
 import sys
+
 from rimcli.modcli import UDDCV
 
 
 class RMDTP:
     """Class to store reading mode types."""
 
-    LIST = ["--single-im7", "--default"]
-    SSTART = ["***Single-file mode***", "***Single-file mode (default)***"]
-
-
-class RFORM:
-    """Class to store calling format."""
-
-    MINL = 3
+    IMAGE_READING_MODE_TYPES = ["--single-im7", "--default"]
 
 
 # Function to Read Data from Command Line Interface
@@ -39,6 +33,8 @@ def RDCLI():
     output: error - boolean indicating if there is an error
             sys.argv - command line arguments
     """
+    MINIMUM_CLI = 3
+
     # Extract program name
     prgnm = UDDCV.SNAME(sys.argv)
     # Show Python version and confirm program running
@@ -46,7 +42,7 @@ def RDCLI():
     UDDCV.SPGRN(prgnm)
 
     # Check for sufficient input data
-    if len(sys.argv) < RFORM.MINL:
+    if len(sys.argv) < MINIMUM_CLI:
         error = UDDCV.SINDT()
         return error, sys.argv
 
@@ -73,7 +69,7 @@ def RINMD(rdmod):
     output: error - boolean indicating if mode is invalid
     """
     UDDCV.SINMD(rdmod)
-    UDDCV.SLRMOD(RMDTP.LIST)
+    UDDCV.SLRMOD(RMDTP.IMAGE_READING_MODE_TYPES)
     return True
 
 
@@ -101,6 +97,9 @@ def RMDXM(rdmod, lspmd):
     output: imode - index of the mode
             error - boolean indicating if mode is invalid
     """
+
+    OUTPUT_STRING_MODES = ["***Single-file mode***", "***Single-file mode (default)***"]
+
     smode, dmode, dmodp = RMDXT(lspmd)
     imode = 1000
     error = False
@@ -113,6 +112,6 @@ def RMDXM(rdmod, lspmd):
         error = RINMD(rdmod)
 
     if not error:
-        print(RMDTP.SSTART[imode])
+        print(OUTPUT_STRING_MODES[imode])
 
     return imode, error
