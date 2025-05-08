@@ -1,252 +1,185 @@
 #!/usr/bin/env python
 
-# Copyright (C) COLVIRM project 2024
-# This project is licensed under the terms of the MIT license.
-# *PYTHON MODULE
-# CDDCV.py
-# *PURPOSE
-# Convert DIC data for computer vision analysis
-# *ACRONYM
-# Convert_Dic_Data_Computer_Vision
-# *DESCRIPTION
-# Functions to convert and refine DIC data for
-# Computer Vision
-# *HISTORY
-# NAME DATE   DESCRIPTION
-# CAG  Jun24  Initial coding
+"""
+CDDCV.py
+
+Python module for converting DIC data for computer vision analysis.
+
+Date: June 2024
+Project: COLVIRM
+License: MIT License
+
+Acronym:
+Convert_Dic_Data_Computer_Vision
+
+Description:
+    This module provides functions to convert and refine DIC (Digital Image Correlation) data
+    to prepare it for computer vision processing tasks.
+
+History:
+    - Jun 2024: Initial version implemented by CAG.
+
+Copyright:
+    (C) CAG, KOKOA-ESPOL 2025
+"""
+
+import ReadIM
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+import numpy as np
+
+from rimcli.modcli import RDDCV, UDDCV
 
 
-# Function to convert Dic image to given mode
 def CDMOD(clinpt):
-    # Import modules
-    # Import Read Dic Data for Computer Vision
-    from rimcli.modcli import RDDCV
+    """
+       Converts a DIC image using the mode specified by the command-line input.
 
-    # Rename read mode functions and classes
-    # Extract command-line reading mode
-    RDMOD = RDDCV.RDMOD
-    # Class of supported modes
-    RMDTP = RDDCV.RMDTP
-    # Extract starting message of modes
-    RMDXM = RDDCV.RMDXM
-    # List of supported modes
-    LIST = RMDTP.LIST
-    # Initialise error flag
-    error = False
-    # DIC image reading modes
-    # Read mode
-    rdmod = RDMOD(clinpt)
-    # Extract list of supported modes
-    lspmd = LIST
-    # Detect mode number
-    imode, error = RMDXM(rdmod, lspmd)
-    # Operate on image using detected mode
+       Parameters:
+           clinpt (list): Command-line input arguments
+
+       Returns:
+           bool: True if an error occurred, False otherwise
+       """
+
+    rdmod = RDDCV.RDMOD(clinpt)
+    lspmd = RDDCV.RMDTP.LIST
+    imode, error = RDDCV.RMDXM(rdmod, lspmd)
+
     if not error:
-        error = CRDCV(imode, clinpt)
-    # Return
+        error = CRDCV(imode, rdmod, clinpt)
+
     return error
 
 
 # Function to convert and refine images per detected mode
-def CRDCV(imode, clinpt):
-    # Import modules
-    # Import Read Dic Data for Computer Vision
-    # Import Utilities for Computer Vision
-    from rimcli.modcli import RDDCV, UDDCV
+def CRDCV(imode, rdmod, clinpt):
+    """
+     Converts and refines a DIC image according to the specified mode.
 
-    # Rename module-mapped functions and classes
-    # Class of supported modes
-    RMDTP = RDDCV.RMDTP
-    # Declare invalid mode
-    RINMD = RDDCV.RINMD
-    # Extract individual string of modes
-    RMDXT = RDDCV.RMDXT
-    # List of supported modes
-    LIST = RMDTP.LIST
-    # Initialise error flag
+     Parameters:
+         imode (int): Detected input mode
+         clinpt (list): Command-line input arguments
+
+     Returns:
+         bool: True if an error occurred, False otherwise
+     """
+
+    supported_modes = RDDCV.RMDTP.LIST
+    default_mode = RDDCV.RMDXT(supported_modes)[2]
     error = False
-    # Load supported modes
-    # Extract list of supported modes
-    lspmd = LIST
-    # Length of supported mode list
-    smode, dmode, dmodp = RMDXT(lspmd)
-    # Single-file: mode 0
+
     if imode == 0:
-        # Convert single im7, no refinement, name from cli
         error = CNORS(clinpt)
-    # Default image reading mode
-    elif imode == dmodp:
-        # Not implemented yet, use as "--single-im7"
+    elif imode == default_mode:
+        # Default mode not implemented yet
         pass
-    # Invalid mode passed through
     else:
-        # Switch on flag for invalid mode
-        error = RINMD(rdmod)
-    # Return
+        error = RDDCV.RINMD(rdmod)
     return error
 
 
-# Function to operate on single im7 image, no refinement
 def CNORS(clinpt):
-    # Import modules
-    # Import Utilities for Computer Vision
-    from rimcli.modcli import UDDCV
+    """
+     Handles a single IM7 image with no refinement, using the CLI input.
 
-    # Rename module-mapped functions and classes
-    # Extract file name from cli
-    FNMCL = UDDCV.FNMCL
-    # Detect if file not found
-    FNFND = UDDCV.FNFND
-    # Extract file name, if existing
-    # File name (with & without format)
-    iname, imname = FNMCL(clinpt)
-    # Switch on error if file not found
-    error = FNFND(iname)
-    # Operate at image lay
+     Parameters:
+         clinpt (list): Command-line input arguments
+
+     Returns:
+         bool: True if file not found, False otherwise
+     """
+
+    iname, imname = UDDCV.FNMCL(clinpt)
+    error = UDDCV.FNFND(iname)
+
     if not error:
         CIMLAY(iname, imname)
-    # Return
     return error
 
 
-# Function to operate once file confirmed to exist
 def CIMLAY(iname, imname):
-    # Import modules
-    # Import Utilities for Computer Vision
-    from rimcli.modcli import UDDCV
+    """
+     Operates on an image once its existence has been confirmed.
 
-    # Rename module-mapped functions
-    # Confirm image level entered
-    SIMLAY = UDDCV.SIMLAY
-    # Enter image level
-    # Confirm im7 image level entered
-    SIMLAY(iname)
-    # Import im7 image as (python) array
+     Parameters:
+         iname (str): Full input file name
+         imname (str): Base image name (without extension)
+     """
+
+    UDDCV.SIMLAY(iname)
     vrray = CIRRAY(iname)
-    # Extract image array settings
-    ncamr, pxlr, pxlc, imtype = CIRST(vrray)
-    # Extracted image array into png image
+    ncamr, _, _, imtype = CIRST(vrray)
     CIPNG(imname, imtype, ncamr, vrray)
-    # Delete image array
+
     del vrray
-    # Return
-    return None
 
 
 # Function to extract image as array
 def CIRRAY(iname):
-    # Import modules
-    # Read im7 image to array
-    import ReadIM
+    """
+        Reads an IM7 image file into a NumPy array.
 
-    # Rename module-mapped functions
-    # Read image with extra output
-    READX = ReadIM.extra
-    # Read image buffer and attributes
-    RBFAT = READX.get_Buffer_andAttributeList
-    # Read image buffer as array
-    RBFAR = READX.buffer_as_array
-    # Extract image attributes and buffer as array
-    # Extract image attributes and buffer
-    vbuff, vatts = RBFAT(iname)
-    # Convert image buffer into python array
-    vrray, vbuff = RBFAR(vbuff)
-    # Remove unused image attributes and buffer
-    del (vbuff, vatts)
-    # Return
+        Parameters:
+            iname (str): Input file name
+
+        Returns:
+            np.ndarray: Image data as array
+    """
+
+    vbuff, vatts = ReadIM.extra.get_Buffer_andAttributeList(iname)
+    vrray, _ = ReadIM.extra.buffer_as_array(vbuff)
+    del vbuff, vatts
     return vrray
 
 
-# Function to show image array settings
 def CIRST(vrray):
-    # Import modules
+    """
+      Extracts and show image array settings.
 
-    # Scientific package of python
-    import numpy as np
+      Parameters:
+          vrray (np.ndarray): Image array
 
-    # Import Utilities for Computer Vision
-    from rimcli.modcli import UDDCV
+      Returns:
+          tuple: (ncamr, pxlr, pxlc, imtype)
+      """
 
-    # Rename module-mapped functions
-    # Extract image array settings
-    SIRST = UDDCV.SIRST
-    # Extract shape of python array
-    SHAPE = np.shape
-    # Extract image characteristics
-    # Image camera and pixel numbers
-    ncamr, pxlr, pxlc = SHAPE(vrray)
-    # Image-channel(s) data type
+    ncamr, pxlr, pxlc = np.shape(vrray)
     imtype = vrray.dtype
-    # Report image characteristics
-    SIRST(ncamr, pxlr, pxlc, imtype)
-    # Return
+    UDDCV.SIRST(ncamr, pxlr, pxlc, imtype)
     return ncamr, pxlr, pxlc, imtype
 
 
-# Function to save image array as png
 def CIPNG(imname, imtype, ncamr, vrray):
-    # Import modules
+    """
+      Save each camera frame in the DIC image array as a PNG file.
 
-    # Plotting module
-    # Colour map
-    import matplotlib.cm as cm
-    import matplotlib.pyplot as plt
+      Parameters:
+          imname (str): Base name for the output image files.
+          imtype (dtype): Data type of the image array.
+          ncamr (int): Number of camera images in the stack.
+          vrray (np.ndarray): Image data array with shape (ncamr, H, W).
+    """
 
-    # Utilities for DIC image and computer vision
-    from rimcli.modcli import UDDCV
+    # Function aliases for readability
+    show_camera = UDDCV.SCMRA
+    build_filename = UDDCV.SINAME
+    log_saved = UDDCV.SISAVE
 
-    # Rename module-mapped functions and classes
-    # String to confirm camera in use
-    SCMRA = UDDCV.SCMRA
-    # Image name with type and camera number
-    SINAME = UDDCV.SINAME
-    # String to confirm image saved
-    SISAVE = UDDCV.SISAVE
-    # Open new figure
-    FIGURE = plt.figure
-    # Close figure
-    CLOSE = plt.close
-    # Show image in current figure
-    IMSHOW = plt.imshow
-    # Save current figure
-    SAVEFG = plt.savefig
-    # Colour map: Greys red
-    GREYSR = cm.Greys_r
-    # Save image in another format
-    # List of camera IDs
-    lcamr = range(0, ncamr)
-    # Loop over cameras
-    for icamr in lcamr:
-        # Show camera no. in use
-        SCMRA(icamr)
-        # Create new figure
-        fig = FIGURE()
-        # Current camera image as array
-        ivrray = vrray[icamr]
-        # Show image array in current figure
-        IMSHOW(ivrray, cmap=GREYSR)
-        # Image name
-        siname = SINAME(imname, imtype, icamr)
-        # Save figure as png
-        SAVEFG(
-            siname + ".png",
-            # Dots per inch
+    for icamr in range(ncamr):
+        show_camera(icamr)
+        fig = plt.figure()
+        plt.imshow(vrray[icamr], cmap=cm.Greys_r)
+
+        filename = build_filename(imname, imtype, icamr) + ".png"
+        plt.savefig(
+            filename,
             dpi="figure",
-            # Image format
             format="png",
-            # Face colour
             facecolor="auto",
-            # Edge colour
             edgecolor="auto",
         )
-        # Show saved figure name
-        SISAVE(siname)
-        # Close figure
-        CLOSE()
-    # Section to refine image
-    # tbc.....
-    # End of Section to refine image
-    # Close all figures
-    CLOSE("all")
-    # Return
-    return None
+        log_saved(filename)
+        plt.close(fig)
+
+    plt.close("all")
