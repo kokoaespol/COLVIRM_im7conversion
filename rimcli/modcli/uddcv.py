@@ -4,7 +4,7 @@
 # This project is licensed under the terms of the MIT license.
 
 """
-UDDCV.py
+uddcv.py
 Purpose: Utilities for DIC data and computer vision analysis
 Acronym: Utilities_Dic_Data_Computer_Vision
 Description: Common utilities used for DIC data reading, refinement

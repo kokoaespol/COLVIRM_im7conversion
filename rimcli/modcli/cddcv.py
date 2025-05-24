@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-CDDCV.py
+cddcv.py
 
 Python module for converting DIC data for computer vision analysis.
 
@@ -28,7 +28,7 @@ import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
 
-from rimcli.modcli import RDDCV, UDDCV
+from rimcli.modcli import rddcv, uddcv
 
 
 def CDMOD(clinpt):
@@ -42,9 +42,9 @@ def CDMOD(clinpt):
            bool: True if an error occurred, False otherwise
        """
 
-    rdmod = RDDCV.RDMOD(clinpt)
-    lspmd = RDDCV.RMDTP.IMAGE_READING_MODE_TYPES
-    imode, error = RDDCV.RMDXM(rdmod, lspmd)
+    rdmod = rddcv.RDMOD(clinpt)
+    lspmd = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
+    imode, error = rddcv.RMDXM(rdmod, lspmd)
 
     if not error:
         error = CRDCV(imode, rdmod, clinpt)
@@ -65,8 +65,8 @@ def CRDCV(imode, rdmod, clinpt):
          bool: True if an error occurred, False otherwise
      """
 
-    supported_modes = RDDCV.RMDTP.IMAGE_READING_MODE_TYPES
-    default_mode = RDDCV.RMDXT(supported_modes)[2]
+    supported_modes = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
+    default_mode = rddcv.RMDXT(supported_modes)[2]
     error = False
 
     if imode == 0:
@@ -75,7 +75,7 @@ def CRDCV(imode, rdmod, clinpt):
         # Default mode not implemented yet
         pass
     else:
-        error = RDDCV.RINMD(rdmod)
+        error = rddcv.RINMD(rdmod)
     return error
 
 
@@ -90,8 +90,8 @@ def CNORS(clinpt):
          bool: True if file not found, False otherwise
      """
 
-    iname, imname = UDDCV.FNMCL(clinpt)
-    error = UDDCV.FNFND(iname)
+    iname, imname = uddcv.FNMCL(clinpt)
+    error = uddcv.FNFND(iname)
 
     if not error:
         CIMLAY(iname, imname)
@@ -107,7 +107,7 @@ def CIMLAY(iname, imname):
          imname (str): Base image name (without extension)
      """
 
-    UDDCV.SIMLAY(iname)
+    uddcv.SIMLAY(iname)
     vrray = CIRRAY(iname)
     ncamr, _, _, imtype = CIRST(vrray)
     CIPNG(imname, imtype, ncamr, vrray)
@@ -146,7 +146,7 @@ def CIRST(vrray):
 
     ncamr, pxlr, pxlc = np.shape(vrray)
     imtype = vrray.dtype
-    UDDCV.SIRST(ncamr, pxlr, pxlc, imtype)
+    uddcv.SIRST(ncamr, pxlr, pxlc, imtype)
     return ncamr, pxlr, pxlc, imtype
 
 
@@ -162,9 +162,9 @@ def CIPNG(imname, imtype, ncamr, vrray):
     """
 
     # Function aliases for readability
-    show_camera = UDDCV.SCMRA
-    build_filename = UDDCV.SINAME
-    log_saved = UDDCV.SISAVE
+    show_camera = uddcv.SCMRA
+    build_filename = uddcv.SINAME
+    log_saved = uddcv.SISAVE
 
     for icamr in range(ncamr):
         show_camera(icamr)

@@ -4,7 +4,7 @@
 # This project is licensed under the terms of the MIT license.
 
 """
-RDDCV.py
+rddcv.py
 Purpose: Read DIC data for computer vision analysis
 Acronym: Read_Dic_Data_Computer_Vision
 Description: Functions to read DIC data, extraction mode, and
@@ -14,7 +14,7 @@ for image refinement and Computer Vision.
 
 import sys
 
-from rimcli.modcli import UDDCV
+from rimcli.modcli import uddcv
 
 
 class RMDTP:
@@ -33,17 +33,17 @@ def RDCLI():
     output: error - boolean indicating if there is an error
             sys.argv - command line arguments
     """
-    MINIMUM_CLI = 3
+    minimum_cli = 3
 
     # Extract program name
-    prgnm = UDDCV.SNAME(sys.argv)
+    prgnm = uddcv.SNAME(sys.argv)
     # Show Python version and confirm program running
-    UDDCV.SPYVR(sys.version)
-    UDDCV.SPGRN(prgnm)
+    uddcv.SPYVR(sys.version)
+    uddcv.SPGRN(prgnm)
 
     # Check for sufficient input data
-    if len(sys.argv) < MINIMUM_CLI:
-        error = UDDCV.SINDT()
+    if len(sys.argv) < minimum_cli:
+        error = uddcv.SINDT()
         return error, sys.argv
 
     return False, sys.argv
@@ -68,8 +68,8 @@ def RINMD(rdmod):
 
     output: error - boolean indicating if mode is invalid
     """
-    UDDCV.SINMD(rdmod)
-    UDDCV.SLRMOD(RMDTP.IMAGE_READING_MODE_TYPES)
+    uddcv.SINMD(rdmod)
+    uddcv.SLRMOD(RMDTP.IMAGE_READING_MODE_TYPES)
     return True
 
 
