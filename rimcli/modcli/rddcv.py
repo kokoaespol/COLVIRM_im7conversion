@@ -23,7 +23,6 @@ class RMDTP:
     IMAGE_READING_MODE_TYPES = ["--single-im7", "--default"]
 
 
-# Function to Read Data from Command Line Interface
 def RDCLI():
     """
     Function to read data from the command line interface.
@@ -115,3 +114,31 @@ def RMDXM(rdmod, lspmd):
         print(OUTPUT_STRING_MODES[imode])
 
     return imode, error
+
+
+def SISAVE(siname):
+    """
+    Function to confirm image was saved.
+
+    input: siname - name of the saved image
+
+    output: None - prints confirmation message
+    """
+    message = "New image saved as"
+    message = SAROW(message)  # Add arrow to message
+    message = SDEMS(message)  # Add spacing to message
+    print(message, siname)
+    return None
+
+
+def SUSCR(string):
+    """
+    Function to add an underscore to a string.
+
+    input: string - original string
+
+    output: string - string with appended underscore
+    """
+    uscr = "_"
+    string = string + uscr
+    return string
