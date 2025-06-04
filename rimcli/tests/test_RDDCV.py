@@ -3,7 +3,7 @@ import pytest
 def test_RDDCV_RDCLI_should_pass_correct_number_arguments_():
     
     # Import the function to be tested
-    from rimcli.modcli.RDDCV import RDCLI
+    from rimcli.modcli.rddcv import RDCLI
 
     # Mock the command line arguments
     import sys
@@ -21,7 +21,7 @@ def test_RDDCV_RDCLI_should_pass_correct_number_arguments_():
 
 def test_RDDCV_RDCLI_should_fail_with_insufficient_arguments():
     # Import the function to be tested
-    from rimcli.modcli.RDDCV import RDCLI
+    from rimcli.modcli.rddcv import RDCLI
 
     # Mock the command line arguments
     import sys
