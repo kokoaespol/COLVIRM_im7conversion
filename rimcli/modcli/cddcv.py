@@ -23,10 +23,10 @@ Copyright:
     (C) CAG, KOKOA-ESPOL 2025
 """
 
-import ReadIM
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
+import ReadIM
 
 from rimcli.modcli import rddcv, uddcv
 

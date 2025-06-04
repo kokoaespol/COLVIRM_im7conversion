@@ -33,11 +33,9 @@ def rcmain():
     """
     # Import modules
     # Import Read DIC Data function for Computer Vision
-    from rimcli.modcli.rddcv import RDCLI as read_command_line
-
     # Import Convert DIC Data function for Computer Vision
     from rimcli.modcli.cddcv import CDMOD as convert_to_mode
-
+    from rimcli.modcli.rddcv import RDCLI as read_command_line
     # Import show exit string function for DIC data
     from rimcli.modcli.uddcv import SEXIT as show_exit_message
 
