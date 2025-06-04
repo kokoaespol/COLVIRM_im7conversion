@@ -12,6 +12,7 @@ and format conversion for preparation to carry out
 Computer Vision analyses.
 """
 
+
 # Function to show exit string
 def SEXIT(error, clinpt):
     """
@@ -144,6 +145,7 @@ class FMIM7:
     """
     Class to store .im7 file format information.
     """
+
     FRIM7 = ".im7"
     LIM7 = len(FRIM7)
 
@@ -158,6 +160,7 @@ def FNFND(iname):
     output: error - boolean indicating if file was not found
     """
     import os
+
     PATH = os.path
     FEXST = PATH.isfile
     error = False

@@ -1,14 +1,16 @@
 import pytest
 
+
 def test_RDDCV_RDCLI_should_pass_correct_number_arguments_():
-    
+
     # Import the function to be tested
     from rimcli.modcli.rddcv import RDCLI
 
     # Mock the command line arguments
     import sys
     from unittest.mock import patch
-    with patch.object(sys, 'argv', ['script_name', 'arg1', 'arg2']):
+
+    with patch.object(sys, "argv", ["script_name", "arg1", "arg2"]):
         # Call the function
         error, clinpt = RDCLI()
 
@@ -26,7 +28,8 @@ def test_RDDCV_RDCLI_should_fail_with_insufficient_arguments():
     # Mock the command line arguments
     import sys
     from unittest.mock import patch
-    with patch.object(sys, 'argv', ['script_name', 'arg1']):
+
+    with patch.object(sys, "argv", ["script_name", "arg1"]):
         # Call the function
         error, clinpt = RDCLI()
 

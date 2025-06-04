@@ -33,14 +33,14 @@ from rimcli.modcli import rddcv, uddcv
 
 def CDMOD(clinpt):
     """
-       Converts a DIC image using the mode specified by the command-line input.
+    Converts a DIC image using the mode specified by the command-line input.
 
-       Parameters:
-           clinpt (list): Command-line input arguments
+    Parameters:
+        clinpt (list): Command-line input arguments
 
-       Returns:
-           bool: True if an error occurred, False otherwise
-       """
+    Returns:
+        bool: True if an error occurred, False otherwise
+    """
 
     rdmod = rddcv.RDMOD(clinpt)
     lspmd = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
@@ -55,15 +55,15 @@ def CDMOD(clinpt):
 # Function to convert and refine images per detected mode
 def CRDCV(imode, rdmod, clinpt):
     """
-     Converts and refines a DIC image according to the specified mode.
+    Converts and refines a DIC image according to the specified mode.
 
-     Parameters:
-         imode (int): Detected input mode
-         clinpt (list): Command-line input arguments
+    Parameters:
+        imode (int): Detected input mode
+        clinpt (list): Command-line input arguments
 
-     Returns:
-         bool: True if an error occurred, False otherwise
-     """
+    Returns:
+        bool: True if an error occurred, False otherwise
+    """
 
     supported_modes = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
     default_mode = rddcv.RMDXT(supported_modes)[2]
@@ -81,14 +81,14 @@ def CRDCV(imode, rdmod, clinpt):
 
 def CNORS(clinpt):
     """
-     Handles a single IM7 image with no refinement, using the CLI input.
+    Handles a single IM7 image with no refinement, using the CLI input.
 
-     Parameters:
-         clinpt (list): Command-line input arguments
+    Parameters:
+        clinpt (list): Command-line input arguments
 
-     Returns:
-         bool: True if file not found, False otherwise
-     """
+    Returns:
+        bool: True if file not found, False otherwise
+    """
 
     iname, imname = uddcv.FNMCL(clinpt)
     error = uddcv.FNFND(iname)
@@ -100,12 +100,12 @@ def CNORS(clinpt):
 
 def CIMLAY(iname, imname):
     """
-     Operates on an image once its existence has been confirmed.
+    Operates on an image once its existence has been confirmed.
 
-     Parameters:
-         iname (str): Full input file name
-         imname (str): Base image name (without extension)
-     """
+    Parameters:
+        iname (str): Full input file name
+        imname (str): Base image name (without extension)
+    """
 
     uddcv.SIMLAY(iname)
     vrray = CIRRAY(iname)
@@ -118,13 +118,13 @@ def CIMLAY(iname, imname):
 # Function to extract image as array
 def CIRRAY(iname):
     """
-        Reads an IM7 image file into a NumPy array.
+    Reads an IM7 image file into a NumPy array.
 
-        Parameters:
-            iname (str): Input file name
+    Parameters:
+        iname (str): Input file name
 
-        Returns:
-            np.ndarray: Image data as array
+    Returns:
+        np.ndarray: Image data as array
     """
 
     vbuff, vatts = ReadIM.extra.get_Buffer_andAttributeList(iname)
@@ -135,14 +135,14 @@ def CIRRAY(iname):
 
 def CIRST(vrray):
     """
-      Extracts and show image array settings.
+    Extracts and show image array settings.
 
-      Parameters:
-          vrray (np.ndarray): Image array
+    Parameters:
+        vrray (np.ndarray): Image array
 
-      Returns:
-          tuple: (ncamr, pxlr, pxlc, imtype)
-      """
+    Returns:
+        tuple: (ncamr, pxlr, pxlc, imtype)
+    """
 
     ncamr, pxlr, pxlc = np.shape(vrray)
     imtype = vrray.dtype
@@ -152,13 +152,13 @@ def CIRST(vrray):
 
 def CIPNG(imname, imtype, ncamr, vrray):
     """
-      Save each camera frame in the DIC image array as a PNG file.
+    Save each camera frame in the DIC image array as a PNG file.
 
-      Parameters:
-          imname (str): Base name for the output image files.
-          imtype (dtype): Data type of the image array.
-          ncamr (int): Number of camera images in the stack.
-          vrray (np.ndarray): Image data array with shape (ncamr, H, W).
+    Parameters:
+        imname (str): Base name for the output image files.
+        imtype (dtype): Data type of the image array.
+        ncamr (int): Number of camera images in the stack.
+        vrray (np.ndarray): Image data array with shape (ncamr, H, W).
     """
 
     # Function aliases for readability
