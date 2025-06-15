@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 
 # Import main function
-from .RDIMCV import rcmain
+from .read_dic_image_CV import rcmain
