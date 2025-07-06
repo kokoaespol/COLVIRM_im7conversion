@@ -7,3 +7,4 @@ Tareas (23/Mar/2025)
   * I2: use I1 integrate 4 .py modules in Carlos's version. Copy IM strategy (to upload in Pypi)
   * I3: Setup.py, upload to Testpypi?
   * Note: Separate repos
+* For cleaner structure: extra files not required will be deleted and others moved to ./tests/extra/
