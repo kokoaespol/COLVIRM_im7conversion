@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='rimcli',
-    version='0.0.19',
+    version='0.0.20',
     author="Carlos Xavier Azua-Gonzalez",
     author_email="Azua-GonzalezCX@cardiff.ac.uk",
     maintainer="KOKOA-ESPOL",

@@ -15,8 +15,8 @@ Copyright:
     (C) CAG, KOKOA-ESPOL 2025
 
 History:
-    Name    Date    Description
-    CAG     May24   Initial coding
+    Name-Date-Description:
+    CAG-May24-Initial coding;
 
 License:
     This project is licensed under the terms of the MIT license.
