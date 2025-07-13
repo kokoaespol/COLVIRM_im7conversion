@@ -268,6 +268,7 @@ def SINAME(imname, imtype, icamr):
     siname = siname + sicamr
     return siname
 
+
 # Function to confirm image saved
 def SISAVE(siname):
     """
@@ -282,6 +283,7 @@ def SISAVE(siname):
     message = SDEMS(message)  # Add spacing to message
     print(message, siname)
     return None
+
 
 # Function to add underscore to string
 def SUSCR(string):
