@@ -96,21 +96,16 @@ def RMDXM(rdmod, lspmd):
     output: imode - index of the mode
             error - boolean indicating if mode is invalid
     """
-
     OUTPUT_STRING_MODES = ["***Single-file mode***", "***Single-file mode (default)***"]
-
     smode, dmode, dmodp = RMDXT(lspmd)
     imode = 1000
     error = False
-
     if rdmod == smode:
         imode = 0
     elif rdmod == dmode:
         imode = dmodp
     else:
         error = RINMD(rdmod)
-
     if not error:
         print(OUTPUT_STRING_MODES[imode])
-
     return imode, error
