@@ -19,7 +19,7 @@ def test(file):
 
     # Execute rim-cli with single-image mode
     print("Testing started in ", image_path)
-    result = subprocess.run(["rim-cli", "--single-im7", str(image_path)], shell=True)
+    result = subprocess.run(["rim-cli", "--single-im7", str(image_path)], shell=False)
 
     # Verify command execution success
     if result.returncode != 0:

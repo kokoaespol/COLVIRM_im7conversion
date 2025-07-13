@@ -24,7 +24,7 @@ setup(
     include_package_data=True,
     entry_points={
         "console_scripts": [
-            "rim-cli = rimcli:rcmain",
+            "rim-cli = rimcli:RCMAIN",
         ],
     },
 )

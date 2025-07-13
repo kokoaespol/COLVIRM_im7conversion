@@ -67,9 +67,9 @@ def RINMD(rdmod):
 
     output: error - boolean indicating if mode is invalid
     """
-    uddcv.SINMD(rdmod)
+    error = uddcv.SINMD(rdmod)
     uddcv.SLRMOD(RMDTP.IMAGE_READING_MODE_TYPES)
-    return True
+    return error
 
 
 def RMDXT(lspmd):
@@ -114,31 +114,3 @@ def RMDXM(rdmod, lspmd):
         print(OUTPUT_STRING_MODES[imode])
 
     return imode, error
-
-
-def SISAVE(siname):
-    """
-    Function to confirm image was saved.
-
-    input: siname - name of the saved image
-
-    output: None - prints confirmation message
-    """
-    message = "New image saved as"
-    message = SAROW(message)  # Add arrow to message
-    message = SDEMS(message)  # Add spacing to message
-    print(message, siname)
-    return None
-
-
-def SUSCR(string):
-    """
-    Function to add an underscore to a string.
-
-    input: string - original string
-
-    output: string - string with appended underscore
-    """
-    uscr = "_"
-    string = string + uscr
-    return string
