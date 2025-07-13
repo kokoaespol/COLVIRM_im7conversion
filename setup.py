@@ -1,13 +1,14 @@
 #!/usr/bin/env python
-from setuptools import find_packages, setup
+from setuptools import setup, find_packages
+import sys
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="rimcli",
-    version="0.0.9",
-    author="Carlos Xavier Azua-Gonzalez, Alan Fleming",
+    name='rimcli',
+    version='0.0.19',
+    author="Carlos Xavier Azua-Gonzalez",
     author_email="Azua-GonzalezCX@cardiff.ac.uk",
     maintainer="KOKOA-ESPOL",
     description="cli-extension for rapid and easy use of ReadIM",
@@ -19,8 +20,17 @@ setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires=">=3.8",
-    install_requires=["numpy<2.0", "matplotlib>=3.6", "ReadIM"],
+    python_requires='>=3.8',
+    install_requires=[
+        'numpy<2.0',
+        'matplotlib>=3.6',
+        'ReadIM',
+        'sphinx',
+        'nbsphinx',
+        'sphinx_rtd_theme',
+        'sphinxcontrib-bibtex',
+        'myst_parser',
+    ],
     include_package_data=True,
     entry_points={
         "console_scripts": [
