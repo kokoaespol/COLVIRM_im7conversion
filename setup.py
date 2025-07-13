@@ -6,8 +6,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='rimcli',
-    version='0.0.20',
+    name="rimcli",
+    version="0.0.20",
     author="Carlos Xavier Azua-Gonzalez",
     author_email="Azua-GonzalezCX@cardiff.ac.uk",
     maintainer="KOKOA-ESPOL",
@@ -20,16 +20,16 @@ setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires='>=3.8',
+    python_requires=">=3.8",
     install_requires=[
-        'numpy<2.0',
-        'matplotlib>=3.6',
-        'ReadIM',
-        'sphinx',
-        'nbsphinx',
-        'sphinx_rtd_theme',
-        'sphinxcontrib-bibtex',
-        'myst_parser',
+        "numpy<2.0",
+        "matplotlib>=3.6",
+        "ReadIM",
+        "sphinx",
+        "nbsphinx",
+        "sphinx_rtd_theme",
+        "sphinxcontrib-bibtex",
+        "myst_parser",
     ],
     include_package_data=True,
     entry_points={

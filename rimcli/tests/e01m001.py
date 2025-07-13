@@ -7,7 +7,7 @@
 
 # Function to test rum-cli functionality
 def test(file):
-    ''' 
+    """
     Test the rim-cli command line interface.
     This test runs the rim-cli command line interface
     on a single im7 image file. The input file is
@@ -22,9 +22,10 @@ def test(file):
     example
     -------
     test('/path/to/image.im7')
-    '''
+    """
     import pathlib
     import subprocess
+
     base_dir = pathlib.Path(file).parent
     imgdat = "B00001.im7"
     image_path = base_dir / imgdat
@@ -34,7 +35,9 @@ def test(file):
         print(f"Error executing command: {result.stderr}")
     print("Testing ended in ", image_path)
 
-    # Execute test with data link file
+
+# Execute test with data link file
 if __name__ == "__main__":
     from rimcli.tests.data import datlnk
+
     test(datlnk.__file__)
