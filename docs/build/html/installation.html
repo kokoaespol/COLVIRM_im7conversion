@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; rimcli 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Package structure and Coding standard" href="package_structure.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            rimcli
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dedicated-environment">Dedicated environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-tools">Development tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-from-test-pypi">Install from (test)pypi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-from-source-code">Install from source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rendering-the-html-documentation">Rendering the html documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="package_structure.html">Package structure and Coding standard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API documentation: rimcli</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rimcli</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<section id="dedicated-environment">
+<h2>Dedicated environment<a class="headerlink" href="#dedicated-environment" title="Permalink to this heading"></a></h2>
+<p>At first initiate a python environment. If you have not created a dedicated environment yet, then create one as follows.
+The environment should be based on a python version suitable for the <code class="docutils literal notranslate"><span class="pre">rimcli</span></code> package (<code class="docutils literal notranslate"><span class="pre">python&gt;=3.8</span></code> is recommended).
+An environment could be created and initiated using <code class="docutils literal notranslate"><span class="pre">conda</span></code>, see e.g. installation of <a class="reference external" href="https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions">anaconda/miniconda</a> (miniconda is a minimal package manager equipped with <code class="docutils literal notranslate"><span class="pre">conda</span></code>). Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code> to confirm the python version, and <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> to check the current packages installed in your newly created environment.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activate conda. Replace ~/anaconda3 with (mini/ana)conda path</span>
+<span class="nb">source</span><span class="w"> </span>~/anaconda3/bin/activate
+<span class="c1"># Create a conda environment, named &quot;rimenv&quot; with python=3.8:</span>
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>rimdev<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8<span class="w"> </span>-y
+<span class="c1"># Activate python environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>rimdev
+<span class="c1"># Get rimenv&#39;s python version</span>
+python<span class="w"> </span>--version
+<span class="c1"># Get list of default packages installed in rimenv</span>
+pip<span class="w"> </span>list
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="development-tools">
+<h2>Development tools<a class="headerlink" href="#development-tools" title="Permalink to this heading"></a></h2>
+<p>Modern environment package managers such as <code class="docutils literal notranslate"><span class="pre">conda</span></code> would often equip your new environment with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, enabling you to install further python packages from standard repositories such as <a class="reference external" href="https://test.pypi.org/">testpypi</a> and <a class="reference external" href="https://pypi.org/">pypi</a>. Further information on package installation can be obtained with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">--help</span></code>.</p>
+<p>In addition, your environment may be initiated with development tools such as <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> and <code class="docutils literal notranslate"><span class="pre">wheel</span></code> by default. These would be useful if you were to further develop the <code class="docutils literal notranslate"><span class="pre">rimcli</span></code> package. If needed <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">setuptools</span> <span class="pre">wheel</span></code>. It is also useful to <code class="docutils literal notranslate"><span class="pre">pip</span>&#160; <span class="pre">install</span> <span class="pre">twine</span></code>, since this package allows you to upload your development to the standard python package repositories, given that you possess enough authorisation credentials, e.g. through a (test)pypi token.</p>
+</section>
+<section id="install-from-test-pypi">
+<h2>Install from (test)pypi<a class="headerlink" href="#install-from-test-pypi" title="Permalink to this heading"></a></h2>
+<p>In a terminal, initialise your <a class="reference internal" href="#dedicated-environment"><span class="std std-ref">dedicated environment</span></a>. Then run the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> method below.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install from (testpypi), replace &lt;version&gt; as required</span>
+pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.python.org/simple<span class="w"> </span>--extra-index-url<span class="w"> </span>https://test.pypi.org/simple/<span class="w"> </span><span class="nv">rimcli</span><span class="o">==</span>&lt;version&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<p>The list of rimcli versions are available in <a class="reference external" href="https://test.pypi.org/project/rimcli/0.0.18/#history">(test)pypi</a></p>
+</section>
+<section id="install-from-source-code">
+<h2>Install from source code<a class="headerlink" href="#install-from-source-code" title="Permalink to this heading"></a></h2>
+<p>Download a stable version of the <a class="reference external" href="https://test.pypi.org/project/rimcli/#files">source code from (test)pypi</a>. Extract the contents of the compressed <code class="docutils literal notranslate"><span class="pre">rimcli-&lt;version&gt;.tar.gz</span></code>.
+Initiate your <a class="reference internal" href="#dedicated-environment"><span class="std std-ref">dedicated environment</span></a> within the main package folder. Compile the distribution files from the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file, and <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> the newly compiled binary from <code class="docutils literal notranslate"><span class="pre">./dist/*.whl</span></code>. You can check that the <code class="docutils literal notranslate"><span class="pre">rimcli</span></code> package was installed by inspecting your packages using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code>.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile rimcli package source code and distribution</span>
+python<span class="w"> </span>./setup.py<span class="w"> </span>sdist<span class="w"> </span>bdist_wheel
+<span class="c1"># Install compiled binary distribution of rimcli</span>
+pip<span class="w"> </span>install<span class="w"> </span>./dist/*.whl
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>For developers only:</strong>
+Only if you have made changes in your python source code, and have generated a few versions (versioned through the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>), it is possible you may have more than one <code class="docutils literal notranslate"><span class="pre">*.whl</span></code> in <code class="docutils literal notranslate"><span class="pre">./dist/</span></code>. In that case, indicate the specific binary version to be installed. Check your new package version is installable for every distribution that you may want to upload to (test)pypi. Do this test before uploading.</p>
+<p>Uploading to the (test)pypi repo is done by the command <code class="docutils literal notranslate"><span class="pre">twine</span> <span class="pre">upload</span> <span class="pre">--repository</span> <span class="pre">testpypi</span> <span class="pre">./dist/*</span></code>.
+Make sure that only the latest version of your modified package (as binary <code class="docutils literal notranslate"><span class="pre">*.whl</span></code> and compressed source code <code class="docutils literal notranslate"><span class="pre">*.tar.gz</span></code>) is present in your <code class="docutils literal notranslate"><span class="pre">./dist/</span></code> folder before uploading to (test)pypi.
+Remember to upload to the correct repository, i.e. either <code class="docutils literal notranslate"><span class="pre">testpypi</span></code> or <code class="docutils literal notranslate"><span class="pre">pypi</span></code>. It is always recommended to try uploading to <code class="docutils literal notranslate"><span class="pre">testpypi</span></code> before any attempts to upload to the official <a class="reference external" href="https://pypi.org/">pypi repo</a> (no versions in pypi are available yet).</p>
+</section>
+<section id="rendering-the-html-documentation">
+<h2>Rendering the html documentation<a class="headerlink" href="#rendering-the-html-documentation" title="Permalink to this heading"></a></h2>
+<p>A local html documentation is attached when the <a class="reference internal" href="#install-from-source-code"><span class="std std-ref">source code is downloaded</span></a>, e.g. from the (testpypi) repository.
+Extract the contents of the compressed source code folder, and change the location of your file explorer to the main package folder. The html documentation is found in <code class="docutils literal notranslate"><span class="pre">./docs/build/html</span></code>.
+Open any of the <code class="docutils literal notranslate"><span class="pre">*.html</span></code> files to start navigating the documentation.</p>
+<p>If the html documentation is for any reason corrupted, you would need to regenerate it using <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>. First follow the <a class="reference internal" href="#install-from-source-code"><span class="std std-ref">source code installation instructions</span></a> so that all <strong>package dependencies</strong> are installed in your dedicated environment.
+Then, open a terminal within the main package folder and run <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> to regenerate the html repo.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean html documentation repo using sphinx</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>./docs/build
+<span class="c1"># Regenerate html documentation repo using sphinx</span>
+sphinx-build<span class="w"> </span>-M<span class="w"> </span>html<span class="w"> </span>./docs/source/<span class="w"> </span>./docs/build/
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>For developers only:</strong>
+Only if you have made changes in your python source code, <strong>before rendering your package html documentation</strong>, open a terminal within the main package folder and run <code class="docutils literal notranslate"><span class="pre">sphinx-apidocs</span></code> to regenerate the source <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files for all subpackages and modules.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean previous package documentation for all subpackages/modules</span>
+rm<span class="w"> </span>./docs/source/rimcli.*
+<span class="c1"># Regenerate package documentation for all subpackages/modules</span>
+sphinx-apidoc<span class="w"> </span>-o<span class="w"> </span>./docs/source/<span class="w"> </span>./rimcli
+</pre></div>
+</div>
+</div></blockquote>
+<p>If errors occur use <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">./docs/source/rimcli.*.rst</span></code> to delete the existing source <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files before running the lines above.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="package_structure.html" class="btn btn-neutral float-right" title="Package structure and Coding standard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Carlos Azua-Gonzalez, KOKOA-ESPOL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package structure and Coding standard &mdash; rimcli 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API documentation: rimcli" href="modules.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            rimcli
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Package structure and Coding standard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-package-structure">Basic package structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-standard">Coding standard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API documentation: rimcli</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rimcli</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Package structure and Coding standard</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/package_structure.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package-structure-and-coding-standard">
+<h1>Package structure and Coding standard<a class="headerlink" href="#package-structure-and-coding-standard" title="Permalink to this heading"></a></h1>
+<section id="basic-package-structure">
+<h2>Basic package structure<a class="headerlink" href="#basic-package-structure" title="Permalink to this heading"></a></h2>
+<p>The structure of the package is as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rimcli/
+├──<span class="w"> </span>__init__.py
+├──<span class="w"> </span>read_dic_image_CV.py
+│<span class="w">   </span>├──<span class="w"> </span>def<span class="w"> </span>RCMAIN<span class="o">()</span>:
+│<span class="w">   </span>└──<span class="w"> </span>...
+├──<span class="w"> </span>tests/
+│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+│<span class="w">   </span>├──<span class="w"> </span>data/
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>datlnk.py
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>*.im7
+│<span class="w">   </span>├──<span class="w"> </span>devenv/
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>*.yml
+│<span class="w">   </span>├──<span class="w"> </span>e01m*.py
+│<span class="w">   </span>└──<span class="w"> </span>test_RDDCV.py
+│
+└──<span class="w"> </span>modcli/
+<span class="w">    </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>├──<span class="w"> </span>rddcv.py
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>def<span class="w"> </span>RDCLI<span class="o">()</span>:
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>...
+<span class="w">    </span>├──<span class="w"> </span>cddcv.py
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>def<span class="w"> </span>CDMOD<span class="o">(</span>clinpt<span class="o">)</span>:
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>...
+<span class="w">    </span>└──<span class="w"> </span>uddcv.py
+<span class="w">        </span>├──<span class="w"> </span>def<span class="w"> </span>SEXIT<span class="o">(</span>error,clinpt<span class="o">)</span>:
+<span class="w">        </span>└──<span class="w"> </span>...
+</pre></div>
+</div>
+</section>
+<section id="coding-standard">
+<h2>Coding standard<a class="headerlink" href="#coding-standard" title="Permalink to this heading"></a></h2>
+<p>The Python Enhancement Proposal (PEP) by Guido Van Rossum et al. should be used as a slack guideline. In addition, purpose specific guidelines have been proposed with the sole intention to preserve internal consistency across the rimcli code. These guidelines are as follows:</p>
+<ul>
+<li><p><strong>License:</strong> start each new module with a line that refers to the MIT license by which the <code class="docutils literal notranslate"><span class="pre">rimcli</span></code> code was originally developed for, but update the date if it is not yet in its final state (as per history chapter as described later in the guidelines).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright (C) CAG, KOKOA-ESPOL 2025</span>
+<span class="c1"># This project is licensed under the terms of the MIT license.</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Variable/function/class/module/(sub-)package names:</strong> Generally, the use of up to six alphanumeric characters in <code class="docutils literal notranslate"><span class="pre">lowercase</span></code> style is preferred for names. The use of <code class="docutils literal notranslate"><span class="pre">lower_case_with_underscores</span></code> style is admitted when this enhances readability. The name could often be an acronym, which should self-describe the use of the variable or function if read together with the preceding comment. However, package and sub-package module names should be short, and should try to adhere to six characters as much as possible (e.g. <code class="docutils literal notranslate"><span class="pre">modcli.py</span></code> is advised, whereas <code class="docutils literal notranslate"><span class="pre">modcli_subpackage.py</span></code> is discouraged).</p>
+<ul class="simple">
+<li><p>The reasoning behind short module and variable names (whenever possible) is that, by experience of developing long codes with various contributors, the longer the names the easier to introduce bugs (especially in modules with repetitive and similar tasks).</p></li>
+</ul>
+</li>
+<li><p><strong>Purpose and acronym:</strong> include a brief description of the purpose of each module, typically within a single line, followed by an acronym as a comment as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python program</span>
+<span class="c1"># rdimcv.py</span>
+<span class="c1"># Purpose</span>
+<span class="c1"># Read a DIC image for computer vision analysis</span>
+<span class="c1"># Acronym</span>
+<span class="c1"># Read_Dic_IMage_Computer_Vision</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This is to be added aside from standard descriptions included as documentation strings for functions and classes, which are then automatically updated by <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Description:</strong> A succinct description of the operation of the module that expands on the purpose of the module as shown in the example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Description</span>
+<span class="c1"># Read a set of Digital-Image-Correlation (DIC) images.</span>
+<span class="c1"># Input is proprietary format im7, which gets converted</span>
+<span class="c1"># to another formats more suitable for Computer Vision</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>History:</strong> Update the history of the core and main modules for every substantial contribution, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># History</span>
+<span class="c1"># Name Date   Description</span>
+<span class="c1"># CAG  May24  Initial coding</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Comments:</strong> aim for a succinct comment per each line of code as much as possible. See two examples of code below. The first code example is inadmissible because there is one line for a number of operations; whereas the second code example, with a descriptive comment per each line of code, complies with the coding standard. Adding comments for the obvious is rather unnecessary, and discouraged. However, experience tells that there are always alternatives ways to include a meaningful comment per each code line in a creative and informative way, rather than filling in spaces with the obvious.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is code for importing python packages</span>
+<span class="kn">import</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package_1</span><span class="o">&gt;</span>
+<span class="kn">import</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package_1</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing python &lt;package_1&gt; for operation 1</span>
+<span class="kn">import</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package_1</span><span class="o">&gt;</span>
+<span class="c1"># Importing python &lt;package_2&gt; for operation 2</span>
+<span class="kn">import</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package_2</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Comments should be placed above the code they refer to and respect indentation</p></li>
+<li><p>Avoid lengthy comments that exceed 3 lines of code. Clarifications can be included either in the description of a module or in history chapter, or as part of the documentation strings, if required.</p></li>
+<li><p>In-line comments are admissible, as long as they do not create confusion with the logic of the code. Notes for further development may be included in the documentation strings.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="API documentation: rimcli" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Carlos Azua-Gonzalez, KOKOA-ESPOL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 ---
+
 Title: 'RIMCLI: A Python tool for image format conversion of Digital Image Correlation using the command-line'
 
 Tags:
@@ -12,7 +13,6 @@ Authors:
 |Name                           |Identifier/email                                          |
 |:---                           |:---                                                      |
 |Carlos Xavier Azua-Gonzalez \+ |orcid: 0000-0002-4433-5182, Azua-GonzalezCX@cardiff.ac.uk |
-|Alan Fleming                   |alanf@amc.edu.au                                          |
 
 Maintainers:
   - KOKOA-ESPOL \*
@@ -24,7 +24,7 @@ Affiliations:
 Date: 23 March 2025
 
 ---
-[//]: # (bibliography: paper.bib)
+
 # Summary
 Digital Image Correlation (DIC) and stereoscopic imaging are used for tracing deformation fields non-intrusively in a reconstructed 3D scene. This scene may involve problems pertaining to either solids and/or fluids. Examples of applications include the investigation of the mechanical response of fluids (flow in porous media, fluid & gas dynamics, ocean engineering), and the mechanical behaviour of materials and structures (e.g. fracture mechanics, detection and monitoring of cracks and shear bands in quasi-brittle materials). A problem of interest is typically replicated in instrumented tests under controlled lab conditions, induced by initial and boundary conditions, to collect rich and extensive sensor and image data. 
 DIC techniques are exploited to extract associated vector/tensor fields (such as velocity and strain components). An accurate quantification of these physical quantities is of critical importance to reveal the underlying mechanics of the problem of interest. The quality of such DIC analyses is intimately related to the ever increasing high-resolution of images, typical of bespoke lab-based hardware and cameras.
@@ -59,6 +59,8 @@ The access to the Super Computing Wales project's facilities (Hawk supercomputin
 ## History
 | Name |   Year |  Description                                                                                    |
 |:---  |:---    |:---                                                                                             |
-|CAG   |Mar24   |Initial coding                                                                                   |
+|CAG   |Mar24   |Initial coding of (local) rimcli package                                                         |
 |CAG   |Jun24   |Initiated Github repository for version control                                                  |
-|CAG   |Mar25   |Transferred ownership of the initial github repository of RIMCLI to KOKOA-ESPOL. Not in PYPI yet |
+|CAG   |Mar25   |Transferred ownership of the initial github repository of rimcli to KOKOA-ESPOL. Not in PyPi yet |
+
+# References
