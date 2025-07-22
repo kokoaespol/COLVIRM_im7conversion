@@ -69,17 +69,14 @@ def CRDCV(imode, rdmod, clinpt):
     default_mode = rddcv.RMDXT(supported_modes)[2]
     error = False
 
-    if imode == 0:
-        error = CNORS(clinpt)
-    elif imode == default_mode:
-        # Default mode not implemented yet
-        pass
+    if imode == 0 or imode == default_mode:
+        error = CNORS(clinpt, imode)
     else:
         error = rddcv.RINMD(rdmod)
     return error
 
 
-def CNORS(clinpt):
+def CNORS(clinpt, imode):
     """
     Handles a single IM7 image with no refinement, using the CLI input.
 
@@ -94,11 +91,11 @@ def CNORS(clinpt):
     error = uddcv.FNFND(iname)
 
     if not error:
-        CIMLAY(iname, imname)
+        CIMLAY(iname, imname, imode)
     return error
 
 
-def CIMLAY(iname, imname):
+def CIMLAY(iname, imname, imode):
     """
     Operates on an image once its existence has been confirmed.
 
@@ -110,7 +107,7 @@ def CIMLAY(iname, imname):
     uddcv.SIMLAY(iname)
     vrray = CIRRAY(iname)
     ncamr, _, _, imtype = CIRST(vrray)
-    CIPNG(imname, imtype, ncamr, vrray)
+    CIPNG(imname, imode, imtype, ncamr, vrray)
 
     del vrray
 
@@ -150,7 +147,7 @@ def CIRST(vrray):
     return ncamr, pxlr, pxlc, imtype
 
 
-def CIPNG(imname, imtype, ncamr, vrray):
+def CIPNG(imname, imode, imtype, ncamr, vrray, x1=260, x2=400, y1=140, y2=525):
     """
     Save each camera frame in the DIC image array as a PNG file.
 
@@ -161,6 +158,9 @@ def CIPNG(imname, imtype, ncamr, vrray):
         vrray (np.ndarray): Image data array with shape (ncamr, H, W).
     """
 
+    supported_modes = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
+    default_mode = rddcv.RMDXT(supported_modes)[2]
+
     # Function aliases for readability
     show_camera = uddcv.SCMRA
     build_filename = uddcv.SINAME
@@ -169,7 +169,13 @@ def CIPNG(imname, imtype, ncamr, vrray):
     for icamr in range(ncamr):
         show_camera(icamr)
         fig = plt.figure()
-        plt.imshow(vrray[icamr], cmap=cm.Greys_r)
+
+        if imode == default_mode:
+            coords = vrray[icamr][x1:x2, y1:y2]
+        else:
+            coords = vrray[icamr]
+
+        plt.imshow(coords, cmap=cm.Greys_r)
 
         filename = build_filename(imname, imtype, icamr) + ".png"
         plt.savefig(

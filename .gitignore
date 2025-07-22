@@ -1,3 +1,9 @@
 Dockerfile
 .idea
 commands.txt
+
+build/
+dist/
+rimcli.egg-info/
+.venv/
+.pytest_cache/
