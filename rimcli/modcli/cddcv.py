@@ -110,16 +110,16 @@ def CRFSIM(clinpt):
     Returns:
         bool: True if file not found, False otherwise
     """
-    mncli_ROI = 5
+    mncli_ROI = 7
     iname, imname = uddcv.FNMCL(clinpt)
     error = uddcv.FNFND(iname)
     if not error:
         if len(clinpt) < mncli_ROI:
             print("Insufficient command-line inputs for ROI coordinates")
         else:
-            ROI_x, ROI_y = uddcv.XTROI(clinpt)
-            CIRLAY(iname, imname, ROI_x, ROI_y)
-        
+            ROI_x1, ROI_x2, ROI_y1, ROI_y2 = uddcv.XTROI(clinpt)
+            CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
+
     return error
 
 
@@ -139,7 +139,7 @@ def CIMLAY(iname, imname):
 
     del vrray
 
-def CIRLAY(iname, imname, ROI_x, ROI_y):
+def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
     Operates on an image once its existence has been confirmed.
     Assumes the image will require ROI generation or other refinements.
@@ -147,14 +147,16 @@ def CIRLAY(iname, imname, ROI_x, ROI_y):
     Parameters:
         iname (str): Full input file name
         imname (str): Base image name (without extension)
-        ROI_x (int): X coordinate for the region of interest
-        ROI_y (int): Y coordinate for the region of interest
+        ROI_x1 (int): X1 coordinate for the region of interest
+        ROI_x2 (int): X2 coordinate for the region of interest
+        ROI_y1 (int): Y1 coordinate for the region of interest
+        ROI_y2 (int): Y2 coordinate for the region of interest
     """
 
     uddcv.SIMLAY(iname)
     vrray = CIRRAY(iname)
     ncamr, _, _, imtype = CIRST(vrray)
-    CIRPNG(imname, imtype, ncamr, vrray, ROI_x, ROI_y)
+    CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
 
     del vrray
 
@@ -227,7 +229,7 @@ def CIPNG(imname, imtype, ncamr, vrray):
 
     plt.close("all")
 
-def CIRPNG(imname, imtype, ncamr, vrray, ROI_x, ROI_y):
+def CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
     Save each camera frame in the DIC image array as a PNG file.
     Allow for ROI generation or other refinements in the future.
