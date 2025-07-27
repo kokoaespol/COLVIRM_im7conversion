@@ -297,3 +297,17 @@ def SUSCR(string):
     uscr = "_"
     string = string + uscr
     return string
+
+# Function extract ROI coordinates from command line input
+def XTROI(clinpt):
+    """
+    Function to extract ROI (Region of Interest) coordinates from command line input.
+
+    input:  clinpt - command line input
+
+    output: ROI_x - x-coordinate of the ROI
+            ROI_y - y-coordinate of the ROI
+    """
+    ROI_x = int(clinpt[3])
+    ROI_y = int(clinpt[4])
+    return ROI_x, ROI_y

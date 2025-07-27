@@ -72,8 +72,9 @@ def CRDCV(imode, rdmod, clinpt):
     if imode == 0:
         error = CNORS(clinpt)
     elif imode == default_mode:
-        # Default mode not implemented yet
-        pass
+        # Default mode: ROI coordinates are transferred
+        # but behaves like CNORS (i.e. no refinement)
+        error = CRFSIM(clinpt)
     else:
         error = rddcv.RINMD(rdmod)
     return error
@@ -97,6 +98,30 @@ def CNORS(clinpt):
         CIMLAY(iname, imname)
     return error
 
+def CRFSIM(clinpt):
+    """
+    Handles a single IM7 image with refinement, using the CLI input.
+    Position of the ROI coordinates is assumed as
+    X coordinate in clinpt[3] and Y coordinate in clinpt[4].
+
+    Parameters:
+        clinpt (list): Command-line input arguments
+
+    Returns:
+        bool: True if file not found, False otherwise
+    """
+    mncli_ROI = 5
+    iname, imname = uddcv.FNMCL(clinpt)
+    error = uddcv.FNFND(iname)
+    if not error:
+        if len(clinpt) < mncli_ROI:
+            print("Insufficient command-line inputs for ROI coordinates")
+        else:
+            ROI_x, ROI_y = uddcv.XTROI(clinpt)
+            CIRLAY(iname, imname, ROI_x, ROI_y)
+        
+    return error
+
 
 def CIMLAY(iname, imname):
     """
@@ -114,6 +139,24 @@ def CIMLAY(iname, imname):
 
     del vrray
 
+def CIRLAY(iname, imname, ROI_x, ROI_y):
+    """
+    Operates on an image once its existence has been confirmed.
+    Assumes the image will require ROI generation or other refinements.
+
+    Parameters:
+        iname (str): Full input file name
+        imname (str): Base image name (without extension)
+        ROI_x (int): X coordinate for the region of interest
+        ROI_y (int): Y coordinate for the region of interest
+    """
+
+    uddcv.SIMLAY(iname)
+    vrray = CIRRAY(iname)
+    ncamr, _, _, imtype = CIRST(vrray)
+    CIRPNG(imname, imtype, ncamr, vrray, ROI_x, ROI_y)
+
+    del vrray
 
 # Function to extract image as array
 def CIRRAY(iname):
@@ -172,6 +215,45 @@ def CIPNG(imname, imtype, ncamr, vrray):
         plt.imshow(vrray[icamr], cmap=cm.Greys_r)
 
         filename = build_filename(imname, imtype, icamr) + ".png"
+        plt.savefig(
+            filename,
+            dpi="figure",
+            format="png",
+            facecolor="auto",
+            edgecolor="auto",
+        )
+        log_saved(filename)
+        plt.close(fig)
+
+    plt.close("all")
+
+def CIRPNG(imname, imtype, ncamr, vrray, ROI_x, ROI_y):
+    """
+    Save each camera frame in the DIC image array as a PNG file.
+    Allow for ROI generation or other refinements in the future.
+
+    Parameters:
+        imname (str): Base name for the output image files.
+        imtype (dtype): Data type of the image array.
+        ncamr (int): Number of camera images in the stack.
+        vrray (np.ndarray): Image data array with shape (ncamr, H, W).
+        ROI_x (int): X coordinate for the region of interest.
+        ROI_y (int): Y coordinate for the region of interest.
+    """
+
+    # Function aliases for readability
+    show_camera = uddcv.SCMRA
+    build_filename = uddcv.SINAME
+    log_saved = uddcv.SISAVE
+
+    for icamr in range(ncamr):
+        show_camera(icamr)
+        fig = plt.figure()
+        plt.imshow(vrray[icamr], cmap=cm.Greys_r)
+
+        filename = build_filename(imname, imtype, icamr) + ".png"
+        # Generate ROI or other refinements here if needed
+        # For now, just save the image
         plt.savefig(
             filename,
             dpi="figure",
