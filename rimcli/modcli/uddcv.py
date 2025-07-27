@@ -305,8 +305,10 @@ def XTROI(clinpt):
 
     input:  clinpt - command line input
 
-    output: ROI_x - x-coordinate of the ROI
-            ROI_y - y-coordinate of the ROI
+    output: ROI_x1 - x1-coordinate of the ROI
+            ROI_x2 - x2-coordinate of the ROI
+            ROI_y1 - y1-coordinate of the ROI
+            ROI_y2 - y2-coordinate of the ROI
     """
     ROI_x1 = int(clinpt[3])
     ROI_x2 = int(clinpt[4])

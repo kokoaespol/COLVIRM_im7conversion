@@ -102,7 +102,8 @@ def CRFSIM(clinpt):
     """
     Handles a single IM7 image with refinement, using the CLI input.
     Position of the ROI coordinates is assumed as
-    X coordinate in clinpt[3] and Y coordinate in clinpt[4].
+    X1 coordinate in clinpt[3] and X2 coordinate in clinpt[4].
+    Y1 coordinate in clinpt[5] and Y2 coordinate in clinpt[6].
 
     Parameters:
         clinpt (list): Command-line input arguments
@@ -114,12 +115,12 @@ def CRFSIM(clinpt):
     iname, imname = uddcv.FNMCL(clinpt)
     error = uddcv.FNFND(iname)
     if not error:
-        if len(clinpt) < mncli_ROI:
-            print("Insufficient command-line inputs for ROI coordinates")
-        else:
+        error = len(clinpt) < mncli_ROI
+        if not error:
             ROI_x1, ROI_x2, ROI_y1, ROI_y2 = uddcv.XTROI(clinpt)
             CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
-
+        else:
+            print("Insufficient command-line inputs for ROI coordinates")
     return error
 
 
@@ -239,8 +240,10 @@ def CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
         imtype (dtype): Data type of the image array.
         ncamr (int): Number of camera images in the stack.
         vrray (np.ndarray): Image data array with shape (ncamr, H, W).
-        ROI_x (int): X coordinate for the region of interest.
-        ROI_y (int): Y coordinate for the region of interest.
+        ROI_x1 (int): X1 coordinate for the region of interest.
+        ROI_x2 (int): X2 coordinate for the region of interest.
+        ROI_y1 (int): Y1 coordinate for the region of interest.
+        ROI_y2 (int): Y2 coordinate for the region of interest.
     """
 
     # Function aliases for readability
