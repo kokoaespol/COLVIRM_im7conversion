@@ -80,7 +80,6 @@ def CRDCV(imode, rdmod, clinpt):
     return error
 
 
-
 def CNORS(clinpt, imode):
     """
     Handles a single IM7 image with no refinement, using the CLI input.
@@ -125,6 +124,7 @@ def CRFSIM(clinpt):
             print("Insufficient command-line inputs for ROI coordinates")
     return error
 
+
 def CIMLAY(iname, imname):
     """
     Operates on an image once its existence has been confirmed.
@@ -140,6 +140,7 @@ def CIMLAY(iname, imname):
     CIPNG(imname, imode, imtype, ncamr, vrray)
 
     del vrray
+
 
 def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
@@ -161,6 +162,7 @@ def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
 
     del vrray
+
 
 # Function to extract image as array
 def CIRRAY(iname):
@@ -197,7 +199,7 @@ def CIRST(vrray):
     return ncamr, pxlr, pxlc, imtype
 
 
-def CIPNG(imname, imode, imtype, ncamr, vrray, x1=260, x2=400, y1=140, y2=525):
+def CIPNG(imname, imode, imtype, ncamr, vrray):
     """
     Save each camera frame in the DIC image array as a PNG file.
 
@@ -220,12 +222,7 @@ def CIPNG(imname, imode, imtype, ncamr, vrray, x1=260, x2=400, y1=140, y2=525):
         show_camera(icamr)
         fig = plt.figure()
 
-        if imode == default_mode:
-            coords = vrray[icamr][x1:x2, y1:y2]
-        else:
-            coords = vrray[icamr]
-
-        plt.imshow(coords, cmap=cm.Greys_r)
+        plt.imshow(vrray[icamr], cmap=cm.Greys_r)
 
         filename = build_filename(imname, imtype, icamr) + ".png"
         plt.savefig(
@@ -239,6 +236,7 @@ def CIPNG(imname, imode, imtype, ncamr, vrray, x1=260, x2=400, y1=140, y2=525):
         plt.close(fig)
 
     plt.close("all")
+
 
 def CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
