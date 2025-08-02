@@ -70,7 +70,7 @@ def CRDCV(imode, rdmod, clinpt):
     error = False
 
     if imode == 0:
-        error = CNORS(clinpt)
+        error = CNORS(clinpt, imode)
     elif imode == default_mode:
         # Default mode: ROI coordinates are transferred
         # but behaves like CNORS (i.e. no refinement)
