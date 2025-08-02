@@ -80,7 +80,6 @@ def CRDCV(imode, rdmod, clinpt):
     return error
 
 
-
 def CNORS(clinpt, imode):
     """
     Handles a single IM7 image with no refinement, using the CLI input.
@@ -141,6 +140,7 @@ def CIMLAY(iname, imname, imode):
 
     del vrray
 
+
 def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
     Operates on an image once its existence has been confirmed.
@@ -161,6 +161,7 @@ def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
 
     del vrray
+
 
 # Function to extract image as array
 def CIRRAY(iname):
@@ -234,6 +235,7 @@ def CIPNG(imname, imode, imtype, ncamr, vrray):
         plt.close(fig)
 
     plt.close("all")
+
 
 def CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
