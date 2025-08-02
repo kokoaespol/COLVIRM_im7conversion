@@ -20,7 +20,7 @@ from rimcli.modcli import uddcv
 class RMDTP:
     """Class to store reading mode types."""
 
-    IMAGE_READING_MODE_TYPES = ["--single-im7", "--default"]
+    IMAGE_READING_MODE_TYPES = ["--single-im7", "--default", "--roi-im7"]
 
 
 def RDCLI():
@@ -96,7 +96,7 @@ def RMDXM(rdmod, lspmd):
     output: imode - index of the mode
             error - boolean indicating if mode is invalid
     """
-    OUTPUT_STRING_MODES = ["***Single-file mode***", "***Single-file mode (default)***"]
+    OUTPUT_STRING_MODES = ["***Single-file mode***", "***Single-file mode (default)***", "***ROI refinement mode***"]
     smode, dmode, dmodp = RMDXT(lspmd)
     imode = 1000
     error = False
