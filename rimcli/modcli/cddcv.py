@@ -125,7 +125,7 @@ def CRFSIM(clinpt):
             print("Insufficient command-line inputs for ROI coordinates")
     return error
 
-def CIMLAY(iname, imname):
+def CIMLAY(iname, imname, imode):
     """
     Operates on an image once its existence has been confirmed.
 
@@ -197,7 +197,7 @@ def CIRST(vrray):
     return ncamr, pxlr, pxlc, imtype
 
 
-def CIPNG(imname, imode, imtype, ncamr, vrray, x1=260, x2=400, y1=140, y2=525):
+def CIPNG(imname, imode, imtype, ncamr, vrray):
     """
     Save each camera frame in the DIC image array as a PNG file.
 
@@ -220,12 +220,7 @@ def CIPNG(imname, imode, imtype, ncamr, vrray, x1=260, x2=400, y1=140, y2=525):
         show_camera(icamr)
         fig = plt.figure()
 
-        if imode == default_mode:
-            coords = vrray[icamr][x1:x2, y1:y2]
-        else:
-            coords = vrray[icamr]
-
-        plt.imshow(coords, cmap=cm.Greys_r)
+        plt.imshow(vrray[icamr], cmap=cm.Greys_r)
 
         filename = build_filename(imname, imtype, icamr) + ".png"
         plt.savefig(
