@@ -20,7 +20,7 @@ from rimcli.modcli import uddcv
 class RMDTP:
     """Class to store reading mode types."""
 
-    IMAGE_READING_MODE_TYPES = ["--single-im7", "--default", "--roi-im7"]
+    IMAGE_READING_MODE_TYPES = ["--single-im7", "--roi-im7"]
 
 
 def RDCLI():

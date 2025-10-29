@@ -66,13 +66,13 @@ def CRDCV(imode, rdmod, clinpt):
     """
 
     supported_modes = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
-    default_mode = rddcv.RMDXT(supported_modes)[2]
+    roi_mode = rddcv.RMDXT(supported_modes)[1]
     error = False
 
     if imode == 0:
         error = CNORS(clinpt, imode)
-    elif imode == default_mode:
-        # Default mode: ROI coordinates are transferred
+    elif imode == roi_mode:
+        # ROI mode: ROI coordinates are transferred
         # but behaves like CNORS (i.e. no refinement)
         error = CRFSIM(clinpt)
     else:
