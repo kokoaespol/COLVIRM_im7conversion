@@ -96,7 +96,11 @@ def RMDXM(rdmod, lspmd):
     output: imode - index of the mode
             error - boolean indicating if mode is invalid
     """
-    OUTPUT_STRING_MODES = ["***Single-file mode***", "***Single-file mode (default)***", "***ROI refinement mode***"]
+    OUTPUT_STRING_MODES = [
+        "***Single-file mode***",
+        "***Single-file mode (default)***",
+        "***ROI refinement mode***",
+    ]
     smode, dmode, dmodp = RMDXT(lspmd)
     imode = 1000
     error = False

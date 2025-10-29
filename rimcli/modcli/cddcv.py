@@ -124,6 +124,7 @@ def CRFSIM(clinpt):
             print("Insufficient command-line inputs for ROI coordinates")
     return error
 
+
 def CIMLAY(iname, imname, imode):
     """
     Operates on an image once its existence has been confirmed.
