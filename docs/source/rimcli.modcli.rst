@@ -4,10 +4,10 @@ rimcli.modcli package
 Submodules
 ----------
 
-rimcli.modcli.cddcv module
+rimcli.modcli.dic_cv_converter module
 --------------------------
 
-.. automodule:: rimcli.modcli.cddcv
+.. automodule:: rimcli.modcli.dic_cv_converter
    :members:
    :undoc-members:
    :show-inheritance:

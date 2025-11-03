@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-cddcv.py
+dic_cv_converter.py
 
 Python module for converting DIC data for computer vision analysis.
 
@@ -9,15 +9,13 @@ Date: June 2024
 Project: COLVIRM
 License: MIT License
 
-Acronym:
-Convert_Dic_Data_Computer_Vision
-
 Description:
     This module provides functions to convert and refine DIC (Digital Image Correlation) data
     to prepare it for computer vision processing tasks.
 
 History:
     - Jun 2024: Initial version implemented by CAG.
+    - Nov 2024: Refactored function and variable names for improved readability.
 
 Copyright:
     (C) CAG, KOKOA-ESPOL 2025
@@ -31,115 +29,121 @@ import ReadIM
 from rimcli.modcli import rddcv, uddcv
 
 
-def CDMOD(clinpt):
+def convert_to_mode(command_input_arguments):
     """
     Converts a DIC image using the mode specified by the command-line input.
 
     Parameters:
-        clinpt (list): Command-line input arguments
+        command_input_arguments (list): Command-line input arguments
 
     Returns:
         bool: True if an error occurred, False otherwise
     """
 
-    rdmod = rddcv.RDMOD(clinpt)
-    lspmd = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
-    imode, error = rddcv.RMDXM(rdmod, lspmd)
+    conversion_mode = rddcv.RDMOD(command_input_arguments)
+    available_modes = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
+    mode_index, error = rddcv.RMDXM(conversion_mode, available_modes)
 
     if not error:
-        error = CRDCV(imode, rdmod, clinpt)
+        error = convert_and_refine(mode_index, conversion_mode, command_input_arguments)
 
     return error
 
 
-# Function to convert and refine images per detected mode
-def CRDCV(imode, rdmod, clinpt):
+def convert_and_refine(mode_index, conversion_mode, command_input_arguments):
     """
     Converts and refines a DIC image according to the specified mode.
 
     Parameters:
-        imode (int): Detected input mode
-        clinpt (list): Command-line input arguments
+        mode_index (int): Index of the conversion mode in the supported modes list
+        conversion_mode: Mode for image conversion
+        command_input_arguments (list): Command-line input arguments
 
     Returns:
         bool: True if an error occurred, False otherwise
     """
 
     supported_modes = rddcv.RMDTP.IMAGE_READING_MODE_TYPES
-    roi_mode = rddcv.RMDXT(supported_modes)[1]
+    roi_mode_index = rddcv.RMDXT(supported_modes)[1]
     error = False
 
-    if imode == 0:
-        error = CNORS(clinpt, imode)
-    elif imode == roi_mode:
+    if mode_index == 0:
+        error = convert_without_refinement(command_input_arguments, mode_index)
+    elif mode_index == roi_mode_index:
         # ROI mode: ROI coordinates are transferred
-        # but behaves like CNORS (i.e. no refinement)
-        error = CRFSIM(clinpt)
+        # but behaves like convert_without_refinement (i.e. no refinement)
+        error = convert_with_refinement_roi(command_input_arguments)
     else:
-        error = rddcv.RINMD(rdmod)
+        error = rddcv.RINMD(conversion_mode)
+
     return error
 
 
-def CNORS(clinpt, imode):
+def convert_without_refinement(command_input_arguments, mode_index):
     """
     Handles a single IM7 image with no refinement, using the CLI input.
 
     Parameters:
-        clinpt (list): Command-line input arguments
+        command_input_arguments (list): Command-line input arguments
+        mode_index (int): Index of the conversion mode
 
     Returns:
         bool: True if file not found, False otherwise
     """
 
-    iname, imname = uddcv.FNMCL(clinpt)
-    error = uddcv.FNFND(iname)
+    full_image_filename, base_image_filename = uddcv.FNMCL(command_input_arguments)
+    error = uddcv.FNFND(full_image_filename)
 
     if not error:
-        CIMLAY(iname, imname, imode)
+        process_image_conversion(full_image_filename, base_image_filename, mode_index)
     return error
 
 
-def CRFSIM(clinpt):
+def convert_with_refinement_roi(command_input_arguments):
     """
     Handles a single IM7 image with refinement, using the CLI input.
     Position of the ROI coordinates is assumed as
-    X1 coordinate in clinpt[3] and X2 coordinate in clinpt[4].
-    Y1 coordinate in clinpt[5] and Y2 coordinate in clinpt[6].
+    X1 coordinate in command_input_arguments[3] and X2 coordinate in command_input_arguments[4].
+    Y1 coordinate in command_input_arguments[5] and Y2 coordinate in command_input_arguments[6].
 
     Parameters:
-        clinpt (list): Command-line input arguments
+        command_input_arguments (list): Command-line input arguments
 
     Returns:
         bool: True if file not found, False otherwise
     """
-    mncli_ROI = 7
-    iname, imname = uddcv.FNMCL(clinpt)
-    error = uddcv.FNFND(iname)
+    MINIMUM_CLI_ARGUMENTS_FOR_ROI = 7
+    full_image_filename, base_image_filename = uddcv.FNMCL(command_input_arguments)
+    error = uddcv.FNFND(full_image_filename)
+
     if not error:
-        error = len(clinpt) < mncli_ROI
+        error = len(command_input_arguments) < MINIMUM_CLI_ARGUMENTS_FOR_ROI
         if not error:
-            ROI_x1, ROI_x2, ROI_y1, ROI_y2 = uddcv.XTROI(clinpt)
-            CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
+            roi_x1, roi_x2, roi_y1, roi_y2 = uddcv.XTROI(command_input_arguments)
+            CIRLAY(
+                full_image_filename, base_image_filename, roi_x1, roi_x2, roi_y1, roi_y2
+            )
         else:
             print("Insufficient command-line inputs for ROI coordinates")
     return error
 
 
-def CIMLAY(iname, imname, imode):
+def process_image_conversion(full_image_filename, base_image_filename, mode_index):
     """
     Operates on an image once its existence has been confirmed.
 
     Parameters:
-        iname (str): Full input file name
-        imname (str): Base image name (without extension)
+        full_image_filename (str): Full input file name
+        base_image_filename (str): Base image name (without extension)
+        mode_index (int): Index of the conversion mode
     """
 
-    uddcv.SIMLAY(iname)
-    vrray = CIRRAY(iname)
-    ncamr, _, _, imtype = CIRST(vrray)
-    CIPNG(imname, imode, imtype, ncamr, vrray)
+    uddcv.SIMLAY(full_image_filename)
+    image_array = CIRRAY(full_image_filename)
+    number_of_cameras, _, _, image_type = CIRST(image_array)
+    CIPNG(base_image_filename, mode_index, image_type, number_of_cameras, image_array)
 
-    del vrray
+    del image_array
 
 
 def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
