@@ -120,7 +120,7 @@ def convert_with_refinement_roi(command_input_arguments):
         error = len(command_input_arguments) < MINIMUM_CLI_ARGUMENTS_FOR_ROI
         if not error:
             roi_x1, roi_x2, roi_y1, roi_y2 = uddcv.XTROI(command_input_arguments)
-            CIRLAY(
+            roi_image_conversion(
                 full_image_filename, base_image_filename, roi_x1, roi_x2, roi_y1, roi_y2
             )
         else:
@@ -139,78 +139,78 @@ def process_image_conversion(full_image_filename, base_image_filename, mode_inde
     """
 
     uddcv.SIMLAY(full_image_filename)
-    image_array = CIRRAY(full_image_filename)
-    number_of_cameras, _, _, image_type = CIRST(image_array)
-    CIPNG(base_image_filename, mode_index, image_type, number_of_cameras, image_array)
+    image_array = read_image_to_array(full_image_filename)
+    number_of_cameras, _, _, image_type = extract_array_settings(image_array)
+    save_camera_frames_single_mode(base_image_filename, mode_index, image_type, number_of_cameras, image_array)
 
     del image_array
 
 
-def CIRLAY(iname, imname, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
+def roi_image_conversion(full_image_namefile, base_image_filename, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
     Operates on an image once its existence has been confirmed.
     Assumes the image will require ROI generation or other refinements.
 
     Parameters:
-        iname (str): Full input file name
-        imname (str): Base image name (without extension)
+        full_image_namefile (str): Full input file name
+        base_image_filename (str): Base image name (without extension)
         ROI_x1 (int): X1 coordinate for the region of interest
         ROI_x2 (int): X2 coordinate for the region of interest
         ROI_y1 (int): Y1 coordinate for the region of interest
         ROI_y2 (int): Y2 coordinate for the region of interest
     """
 
-    uddcv.SIMLAY(iname)
-    vrray = CIRRAY(iname)
-    ncamr, _, _, imtype = CIRST(vrray)
-    CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
+    uddcv.SIMLAY(full_image_namefile)
+    image_data_array = read_image_to_array(full_image_namefile)
+    number_of_cameras, _, _, image_data_type = extract_array_settings(image_data_array)
+    save_camera_frames_roi_mode(base_image_filename, image_data_type, number_of_cameras, image_data_array, ROI_x1, ROI_x2, ROI_y1, ROI_y2)
 
-    del vrray
+    del image_data_array
 
 
 # Function to extract image as array
-def CIRRAY(iname):
+def read_image_to_array(full_image_namefile):
     """
     Reads an IM7 image file into a NumPy array.
 
     Parameters:
-        iname (str): Input file name
+        full_image_namefile (str): Input file name
 
     Returns:
         np.ndarray: Image data as array
     """
 
-    vbuff, vatts = ReadIM.extra.get_Buffer_andAttributeList(iname)
-    vrray, _ = ReadIM.extra.buffer_as_array(vbuff)
+    vbuff, vatts = ReadIM.extra.get_Buffer_andAttributeList(full_image_namefile)
+    image_data_array, _ = ReadIM.extra.buffer_as_array(vbuff)
     del vbuff, vatts
-    return vrray
+    return image_data_array
 
 
-def CIRST(vrray):
+def extract_array_settings(image_data_array):
     """
     Extracts and show image array settings.
 
     Parameters:
-        vrray (np.ndarray): Image array
+        image_data_array (np.ndarray): Image array
 
     Returns:
-        tuple: (ncamr, pxlr, pxlc, imtype)
+        tuple: (number_of_cameras, pxlr, pxlc, image_data_type)
     """
 
-    ncamr, pxlr, pxlc = np.shape(vrray)
-    imtype = vrray.dtype
-    uddcv.SIRST(ncamr, pxlr, pxlc, imtype)
-    return ncamr, pxlr, pxlc, imtype
+    number_of_cameras, pxlr, pxlc = np.shape(image_data_array)
+    image_data_type = image_data_array.dtype
+    uddcv.SIRST(number_of_cameras, pxlr, pxlc, image_data_type)
+    return number_of_cameras, pxlr, pxlc, image_data_type
 
 
-def CIPNG(imname, imode, imtype, ncamr, vrray):
+def save_camera_frames_single_mode(base_image_file_name, imode, image_data_type, number_of_cameras, vrray):
     """
     Save each camera frame in the DIC image array as a PNG file.
 
     Parameters:
-        imname (str): Base name for the output image files.
-        imtype (dtype): Data type of the image array.
-        ncamr (int): Number of camera images in the stack.
+        base_image_file_name (str): Base name for the output image files.
+        image_data_type (dtype): Data type of the image array.
+        number_of_cameras (int): Number of camera images in the stack.
         vrray (np.ndarray): Image data array with shape (ncamr, H, W).
     """
 
@@ -222,13 +222,13 @@ def CIPNG(imname, imode, imtype, ncamr, vrray):
     build_filename = uddcv.SINAME
     log_saved = uddcv.SISAVE
 
-    for icamr in range(ncamr):
+    for icamr in range(number_of_cameras):
         show_camera(icamr)
         fig = plt.figure()
 
         plt.imshow(vrray[icamr], cmap=cm.Greys_r)
 
-        filename = build_filename(imname, imtype, icamr) + ".png"
+        filename = build_filename(base_image_file_name, image_data_type, icamr) + ".png"
         plt.savefig(
             filename,
             dpi="figure",
@@ -242,15 +242,15 @@ def CIPNG(imname, imode, imtype, ncamr, vrray):
     plt.close("all")
 
 
-def CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
+def save_camera_frames_roi_mode(base_image_filename, image_daya_type, number_of_cameras, image_data_array, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     """
     Save each camera frame in the DIC image array as a PNG file.
     Allow for ROI generation or other refinements in the future.
 
     Parameters:
-        imname (str): Base name for the output image files.
-        imtype (dtype): Data type of the image array.
-        ncamr (int): Number of camera images in the stack.
+        base_image_file_name (str): Base name for the output image files.
+        image_data_type (dtype): Data type of the image array.
+        number_of_cameras (int): Number of camera images in the stack.
         vrray (np.ndarray): Image data array with shape (ncamr, H, W).
         ROI_x1 (int): X1 coordinate for the region of interest.
         ROI_x2 (int): X2 coordinate for the region of interest.
@@ -263,14 +263,14 @@ def CIRPNG(imname, imtype, ncamr, vrray, ROI_x1, ROI_x2, ROI_y1, ROI_y2):
     build_filename = uddcv.SINAME
     log_saved = uddcv.SISAVE
 
-    for icamr in range(ncamr):
+    for icamr in range(number_of_cameras):
         show_camera(icamr)
         fig = plt.figure()
 
-        roi_image = vrray[icamr][ROI_x1:ROI_x2, ROI_y1:ROI_y2]
+        roi_image = image_data_array[icamr][ROI_x1:ROI_x2, ROI_y1:ROI_y2]
         plt.imshow(roi_image, cmap=cm.Greys_r)
 
-        filename = build_filename(imname, imtype, icamr) + ".png"
+        filename = build_filename(base_image_filename, image_daya_type, icamr) + ".png"
         # Generate ROI or other refinements here if needed
         # For now, just save the image
         plt.savefig(
