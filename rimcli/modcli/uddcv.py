@@ -125,8 +125,8 @@ def get_im7_filename(clinpt):
     output: iname  - full image file name with extension
             imname - base image file name without extension
     """
-    LIM7 = FMIM7.LIM7
-    FRIM7 = FMIM7.FRIM7
+    LIM7 = IM7Format.LIM7
+    FRIM7 = IM7Format.FRIM7
     imname = clinpt[2]
     lname = len(imname)
     lim7 = LIM7
@@ -141,7 +141,7 @@ def get_im7_filename(clinpt):
 
 
 # Class: information of .im7 format
-class FMIM7:
+class IM7Format:
     """
     Class to store .im7 file format information.
     """
