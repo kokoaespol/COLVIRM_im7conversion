@@ -102,7 +102,7 @@ def print_supported_modes(lspmd):
 
 
 # Function to confirm invalid reading mode
-def SINMD(rdmod):
+def print_invalid_mode(rdmod):
     """
     Function to show error message for invalid mode.
 

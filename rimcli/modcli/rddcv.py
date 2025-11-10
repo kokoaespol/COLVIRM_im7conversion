@@ -67,7 +67,7 @@ def RINMD(rdmod):
 
     output: error - boolean indicating if mode is invalid
     """
-    error = uddcv.SINMD(rdmod)
+    error = uddcv.print_invalid_mode(rdmod)
     uddcv.print_supported_modes(RMDTP.IMAGE_READING_MODE_TYPES)
     return error
 
