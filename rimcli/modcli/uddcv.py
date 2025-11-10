@@ -58,7 +58,7 @@ def get_python_version(pyvrs):
 
 
 # Function to confirm program is running
-def SPGRN(prgnm):
+def print_execution_status(prgnm):
     """
     Function to display that the program is running.
 

@@ -38,7 +38,7 @@ def RDCLI():
     prgnm = uddcv.get_program_name(sys.argv)
     # Show Python version and confirm program running
     uddcv.get_python_version(sys.version)
-    uddcv.SPGRN(prgnm)
+    uddcv.print_execution_status(prgnm)
 
     # Check for sufficient input data
     if len(sys.argv) < minimum_cli:
