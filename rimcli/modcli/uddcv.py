@@ -85,7 +85,7 @@ def print_missing_inputs():
 
 
 # Function to output list of supported modes
-def SLRMOD(lspmd):
+def print_supported_modes(lspmd):
     """
     Function to display list of supported modes.
 
