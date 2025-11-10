@@ -23,7 +23,7 @@ def SEXIT(error, clinpt):
 
     output: None
     """
-    prgnm = SNAME(clinpt)
+    prgnm = get_program_name(clinpt)
     if error:
         print(prgnm, "run aborted!")
     else:
@@ -32,7 +32,7 @@ def SEXIT(error, clinpt):
 
 
 # Function to extract python script name
-def SNAME(clinpt):
+def get_program_name(clinpt):
     """
     Function to extract the program name.
 
