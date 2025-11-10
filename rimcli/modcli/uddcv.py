@@ -151,7 +151,7 @@ class IM7Format:
 
 
 # Function to detect inexisting file
-def is_invalid_file(iname):
+def is_file_not_found(iname):
     """
     Function to check if a file exists.
 

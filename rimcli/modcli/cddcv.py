@@ -91,7 +91,7 @@ def CNORS(clinpt):
     """
 
     iname, imname = uddcv.get_im7_filename(clinpt)
-    error = uddcv.is_invalid_file(iname)
+    error = uddcv.is_file_not_found(iname)
 
     if not error:
         CIMLAY(iname, imname)
