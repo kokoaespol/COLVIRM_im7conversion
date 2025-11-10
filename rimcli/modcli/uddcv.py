@@ -172,7 +172,7 @@ def is_file_not_found(iname):
 
 
 # Function to show string of image-level
-def SIMLAY(iname):
+def print_image_processing(iname):
     """
     Function to print messages for image-level operation.
 

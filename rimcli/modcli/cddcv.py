@@ -107,7 +107,7 @@ def CIMLAY(iname, imname):
         imname (str): Base image name (without extension)
     """
 
-    uddcv.SIMLAY(iname)
+    uddcv.print_image_processing(iname)
     vrray = CIRRAY(iname)
     ncamr, _, _, imtype = CIRST(vrray)
     CIPNG(imname, imtype, ncamr, vrray)
