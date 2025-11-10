@@ -116,7 +116,7 @@ def print_invalid_mode(rdmod):
 
 
 # Function to get im7 file name from cli
-def FNMCL(clinpt):
+def get_im7_filename(clinpt):
     """
     Function to extract .im7 file name from command line input.
 

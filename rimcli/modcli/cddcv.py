@@ -90,7 +90,7 @@ def CNORS(clinpt):
         bool: True if file not found, False otherwise
     """
 
-    iname, imname = uddcv.FNMCL(clinpt)
+    iname, imname = uddcv.get_im7_filename(clinpt)
     error = uddcv.FNFND(iname)
 
     if not error:
