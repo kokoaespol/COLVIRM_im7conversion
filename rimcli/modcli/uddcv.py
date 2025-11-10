@@ -14,7 +14,7 @@ Computer Vision analyses.
 
 
 # Function to show exit string
-def SEXIT(error, clinpt):
+def print_progress(error, clinpt):
     """
     Function to print exit message depending on program execution.
 

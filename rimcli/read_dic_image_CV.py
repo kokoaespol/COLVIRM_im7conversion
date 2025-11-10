@@ -37,7 +37,7 @@ def RCMAIN():
     # Import show exit string function for DIC data
     from rimcli.modcli.cddcv import CDMOD as convert_to_mode
     from rimcli.modcli.rddcv import RDCLI as read_command_line
-    from rimcli.modcli.uddcv import SEXIT as show_exit_message
+    from rimcli.modcli.uddcv import print_progress as show_exit_message
 
     # Extract input data
     # Extract interpreter and command line input
