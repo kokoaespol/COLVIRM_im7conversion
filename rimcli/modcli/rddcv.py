@@ -42,7 +42,7 @@ def RDCLI():
 
     # Check for sufficient input data
     if len(sys.argv) < minimum_cli:
-        error = uddcv.SINDT()
+        error = uddcv.print_missing_inputs()
         return error, sys.argv
 
     return False, sys.argv

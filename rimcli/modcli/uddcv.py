@@ -71,7 +71,7 @@ def print_execution_status(prgnm):
 
 
 # Function to clarify insufficient input data
-def SINDT():
+def print_missing_inputs():
     """
     Function to show error for insufficient input data.
 
