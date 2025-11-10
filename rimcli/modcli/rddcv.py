@@ -37,7 +37,7 @@ def RDCLI():
     # Extract program name
     prgnm = uddcv.get_program_name(sys.argv)
     # Show Python version and confirm program running
-    uddcv.SPYVR(sys.version)
+    uddcv.get_python_version(sys.version)
     uddcv.SPGRN(prgnm)
 
     # Check for sufficient input data

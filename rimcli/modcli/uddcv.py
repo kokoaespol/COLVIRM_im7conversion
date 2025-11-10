@@ -45,7 +45,7 @@ def get_program_name(clinpt):
 
 
 # Function to show Python version
-def SPYVR(pyvrs):
+def get_python_version(pyvrs):
     """
     Function to display Python version in use.
 
