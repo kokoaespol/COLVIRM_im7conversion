@@ -15,8 +15,13 @@ Copyright:
     (C) CAG, KOKOA-ESPOL 2025
 
 History:
+<<<<<<< HEAD
     Name    Date    Description
     CAG     May24   Initial coding
+=======
+    Name-Date-Description:
+    CAG-May24-Initial coding;
+>>>>>>> main
 
 License:
     This project is licensed under the terms of the MIT license.
@@ -24,7 +29,11 @@ License:
 
 
 # Main function of rimcli
+<<<<<<< HEAD
 def rcmain():
+=======
+def RCMAIN():
+>>>>>>> main
     """
     Main function to read a DIC image for computer vision analysis
     Read a set of Digital-Image-Correlation (DIC) images.
@@ -54,4 +63,8 @@ def rcmain():
 # Main method for rdimcv
 if __name__ == "__main__":
     # Execute main function
+<<<<<<< HEAD
     rcmain()
+=======
+    RCMAIN()
+>>>>>>> main

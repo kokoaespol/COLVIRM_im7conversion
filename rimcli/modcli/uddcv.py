@@ -267,3 +267,36 @@ def SINAME(imname, imtype, icamr):
     siname = SUSCR(siname)
     siname = siname + sicamr
     return siname
+<<<<<<< HEAD
+=======
+
+
+# Function to confirm image saved
+def SISAVE(siname):
+    """
+    Function to confirm image was saved.
+
+    input: siname - name of the saved image
+
+    output: None - prints confirmation message
+    """
+    message = "New image saved as"
+    message = SAROW(message)  # Add arrow to message
+    message = SDEMS(message)  # Add spacing to message
+    print(message, siname)
+    return None
+
+
+# Function to add underscore to string
+def SUSCR(string):
+    """
+    Function to add an underscore to a string.
+
+    input: string - original string
+
+    output: string - string with appended underscore
+    """
+    uscr = "_"
+    string = string + uscr
+    return string
+>>>>>>> main

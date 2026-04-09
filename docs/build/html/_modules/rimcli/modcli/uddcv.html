@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rimcli.modcli.uddcv &mdash; rimcli 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            rimcli
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../package_structure.html">Package structure and Coding standard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">API documentation: rimcli</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">rimcli</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">rimcli.modcli.uddcv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for rimcli.modcli.uddcv</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># Copyright (C) COLVIRM project 2024</span>
+<span class="c1"># This project is licensed under the terms of the MIT license.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">uddcv.py</span>
+<span class="sd">Purpose: Utilities for DIC data and computer vision analysis</span>
+<span class="sd">Acronym: Utilities_Dic_Data_Computer_Vision</span>
+<span class="sd">Description: Common utilities used for DIC data reading, refinement</span>
+<span class="sd">and format conversion for preparation to carry out</span>
+<span class="sd">Computer Vision analyses.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># Function to show exit string</span>
+<div class="viewcode-block" id="SEXIT"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SEXIT">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SEXIT</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">clinpt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to print exit message depending on program execution.</span>
+
+<span class="sd">    input:  error  - boolean indicating if error occurred</span>
+<span class="sd">            clinpt - command line input</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prgnm</span> <span class="o">=</span> <span class="n">SNAME</span><span class="p">(</span><span class="n">clinpt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">prgnm</span><span class="p">,</span> <span class="s2">&quot;run aborted!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">prgnm</span><span class="p">,</span> <span class="s2">&quot;run successfully completed!&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to extract python script name</span>
+<div class="viewcode-block" id="SNAME"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SNAME">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SNAME</span><span class="p">(</span><span class="n">clinpt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to extract the program name.</span>
+
+<span class="sd">    input:  clinpt - command line input</span>
+
+<span class="sd">    output: prgnm - program name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prgnm</span> <span class="o">=</span> <span class="n">clinpt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">prgnm</span></div>
+
+
+<span class="c1"># Function to show Python version</span>
+<div class="viewcode-block" id="SPYVR"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SPYVR">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SPYVR</span><span class="p">(</span><span class="n">pyvrs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to display Python version in use.</span>
+
+<span class="sd">    input:  pyvrs - Python version string</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python version in use:&quot;</span><span class="p">,</span> <span class="n">pyvrs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to confirm program is running</span>
+<div class="viewcode-block" id="SPGRN"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SPGRN">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SPGRN</span><span class="p">(</span><span class="n">prgnm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to display that the program is running.</span>
+
+<span class="sd">    input:  prgnm - program name</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running&quot;</span><span class="p">,</span> <span class="n">prgnm</span><span class="p">,</span> <span class="s2">&quot;as python script...&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to clarify insufficient input data</span>
+<div class="viewcode-block" id="SINDT"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SINDT">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SINDT</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to show error for insufficient input data.</span>
+
+<span class="sd">    input:  None</span>
+
+<span class="sd">    output: error - boolean flag indicating error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Insufficient command-line inputs&quot;</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">error</span></div>
+
+
+<span class="c1"># Function to output list of supported modes</span>
+<div class="viewcode-block" id="SLRMOD"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SLRMOD">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SLRMOD</span><span class="p">(</span><span class="n">lspmd</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to display list of supported modes.</span>
+
+<span class="sd">    input:  lspmd - list of modes</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List of supported modes:&quot;</span><span class="p">)</span>
+    <span class="n">imode</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">modes</span> <span class="ow">in</span> <span class="n">lspmd</span><span class="p">:</span>
+        <span class="n">imode</span> <span class="o">=</span> <span class="n">imode</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">imode</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">modes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to confirm invalid reading mode</span>
+<div class="viewcode-block" id="SINMD"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SINMD">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SINMD</span><span class="p">(</span><span class="n">rdmod</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to show error message for invalid mode.</span>
+
+<span class="sd">    input:  rdmod - reading mode string</span>
+
+<span class="sd">    output: error - boolean flag indicating error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command-line input for mode:&quot;</span><span class="p">,</span> <span class="n">rdmod</span><span class="p">,</span> <span class="s2">&quot;, is invalid&quot;</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">error</span></div>
+
+
+<span class="c1"># Function to get im7 file name from cli</span>
+<div class="viewcode-block" id="FNMCL"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.FNMCL">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">FNMCL</span><span class="p">(</span><span class="n">clinpt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to extract .im7 file name from command line input.</span>
+
+<span class="sd">    input:  clinpt - command line input</span>
+
+<span class="sd">    output: iname  - full image file name with extension</span>
+<span class="sd">            imname - base image file name without extension</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LIM7</span> <span class="o">=</span> <span class="n">FMIM7</span><span class="o">.</span><span class="n">LIM7</span>
+    <span class="n">FRIM7</span> <span class="o">=</span> <span class="n">FMIM7</span><span class="o">.</span><span class="n">FRIM7</span>
+    <span class="n">imname</span> <span class="o">=</span> <span class="n">clinpt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">lname</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">imname</span><span class="p">)</span>
+    <span class="n">lim7</span> <span class="o">=</span> <span class="n">LIM7</span>
+    <span class="n">fmpos</span> <span class="o">=</span> <span class="n">lname</span> <span class="o">-</span> <span class="n">lim7</span>
+    <span class="n">formt</span> <span class="o">=</span> <span class="n">imname</span><span class="p">[</span><span class="n">fmpos</span><span class="p">:</span><span class="n">lname</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">formt</span> <span class="o">==</span> <span class="n">FRIM7</span><span class="p">:</span>
+        <span class="n">iname</span> <span class="o">=</span> <span class="n">imname</span> <span class="o">+</span> <span class="n">FRIM7</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">iname</span> <span class="o">=</span> <span class="n">imname</span>
+        <span class="n">imname</span> <span class="o">=</span> <span class="n">imname</span><span class="p">[:</span><span class="n">fmpos</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">iname</span><span class="p">,</span> <span class="n">imname</span></div>
+
+
+<span class="c1"># Class: information of .im7 format</span>
+<div class="viewcode-block" id="FMIM7"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.FMIM7">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">FMIM7</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to store .im7 file format information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">FRIM7</span> <span class="o">=</span> <span class="s2">&quot;.im7&quot;</span>
+    <span class="n">LIM7</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">FRIM7</span><span class="p">)</span></div>
+
+
+<span class="c1"># Function to detect inexisting file</span>
+<div class="viewcode-block" id="FNFND"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.FNFND">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">FNFND</span><span class="p">(</span><span class="n">iname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to check if a file exists.</span>
+
+<span class="sd">    input:  iname - full image file name</span>
+
+<span class="sd">    output: error - boolean indicating if file was not found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+    <span class="n">PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span>
+    <span class="n">FEXST</span> <span class="o">=</span> <span class="n">PATH</span><span class="o">.</span><span class="n">isfile</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">ffnd</span> <span class="o">=</span> <span class="n">FEXST</span><span class="p">(</span><span class="n">iname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ffnd</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DIC file&quot;</span><span class="p">,</span> <span class="n">iname</span><span class="p">,</span> <span class="s2">&quot;not found&quot;</span><span class="p">)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">error</span></div>
+
+
+<span class="c1"># Function to show string of image-level</span>
+<div class="viewcode-block" id="SIMLAY"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SIMLAY">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SIMLAY</span><span class="p">(</span><span class="n">iname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to print messages for image-level operation.</span>
+
+<span class="sd">    input:  iname - full image file name</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Operating at im7-file level&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name of im7 file:&quot;</span><span class="p">,</span> <span class="n">iname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to show image array settings</span>
+<div class="viewcode-block" id="SIRST"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SIRST">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SIRST</span><span class="p">(</span><span class="n">ncamr</span><span class="p">,</span> <span class="n">pxlr</span><span class="p">,</span> <span class="n">pxlc</span><span class="p">,</span> <span class="n">imtype</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to show image array properties.</span>
+
+<span class="sd">    input:  ncamr  - number of cameras</span>
+<span class="sd">            pxlr   - pixel rows</span>
+<span class="sd">            pxlc   - pixel columns</span>
+<span class="sd">            imtype - image channel type</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sncamr</span> <span class="o">=</span> <span class="n">SDEMS</span><span class="p">(</span><span class="s2">&quot;Number of cameras in DIC:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sncamr</span><span class="p">,</span> <span class="n">ncamr</span><span class="p">)</span>
+    <span class="n">spxl</span> <span class="o">=</span> <span class="n">SDEMS</span><span class="p">(</span><span class="s2">&quot;Camera pixel resolution:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">spxl</span><span class="p">,</span> <span class="n">pxlr</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">pxlc</span><span class="p">)</span>
+    <span class="n">sityp</span> <span class="o">=</span> <span class="n">SDEMS</span><span class="p">(</span><span class="s2">&quot;Image channel type:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sityp</span><span class="p">,</span> <span class="n">imtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to merge double empty space before a string</span>
+<div class="viewcode-block" id="SDEMS"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SDEMS">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SDEMS</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to add empty space before a string.</span>
+
+<span class="sd">    input:  string - original string</span>
+
+<span class="sd">    output: string - modified string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">empty</span> <span class="o">=</span> <span class="s2">&quot;  &quot;</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">empty</span> <span class="o">+</span> <span class="n">string</span>
+    <span class="k">return</span> <span class="n">string</span></div>
+
+
+<span class="c1"># Function to merge arrow before a string</span>
+<div class="viewcode-block" id="SAROW"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SAROW">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SAROW</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to add arrow before a string.</span>
+
+<span class="sd">    input:  string - original string</span>
+
+<span class="sd">    output: string - modified string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;-&gt; &quot;</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">arrow</span> <span class="o">+</span> <span class="n">string</span>
+    <span class="k">return</span> <span class="n">string</span></div>
+
+
+<span class="c1"># Function to confirm camera no. in use</span>
+<div class="viewcode-block" id="SCMRA"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SCMRA">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SCMRA</span><span class="p">(</span><span class="n">icamr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to display selected camera number.</span>
+
+<span class="sd">    input:  icamr - camera number</span>
+
+<span class="sd">    output: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">SAROW</span><span class="p">(</span><span class="s2">&quot;Importing from camera no.:&quot;</span><span class="p">)</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">SDEMS</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">icamr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to create image name from type and camera number</span>
+<div class="viewcode-block" id="SINAME"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SINAME">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SINAME</span><span class="p">(</span><span class="n">imname</span><span class="p">,</span> <span class="n">imtype</span><span class="p">,</span> <span class="n">icamr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to generate full image name with type and camera number.</span>
+
+<span class="sd">    input:  imname - base image name</span>
+<span class="sd">            imtype - image channel type</span>
+<span class="sd">            icamr  - camera number</span>
+
+<span class="sd">    output: siname - full structured image name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sitype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">imtype</span><span class="p">)</span>
+    <span class="n">sicamr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">icamr</span><span class="p">)</span>
+    <span class="n">siname</span> <span class="o">=</span> <span class="n">SUSCR</span><span class="p">(</span><span class="n">imname</span><span class="p">)</span>
+    <span class="n">siname</span> <span class="o">=</span> <span class="n">siname</span> <span class="o">+</span> <span class="n">sitype</span>
+    <span class="n">siname</span> <span class="o">=</span> <span class="n">SUSCR</span><span class="p">(</span><span class="n">siname</span><span class="p">)</span>
+    <span class="n">siname</span> <span class="o">=</span> <span class="n">siname</span> <span class="o">+</span> <span class="n">sicamr</span>
+    <span class="k">return</span> <span class="n">siname</span></div>
+
+
+<span class="c1"># Function to confirm image saved</span>
+<div class="viewcode-block" id="SISAVE"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SISAVE">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SISAVE</span><span class="p">(</span><span class="n">siname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to confirm image was saved.</span>
+
+<span class="sd">    input: siname - name of the saved image</span>
+
+<span class="sd">    output: None - prints confirmation message</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;New image saved as&quot;</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">SAROW</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>  <span class="c1"># Add arrow to message</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">SDEMS</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>  <span class="c1"># Add spacing to message</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">siname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># Function to add underscore to string</span>
+<div class="viewcode-block" id="SUSCR"><a class="viewcode-back" href="../../../rimcli.modcli.html#rimcli.modcli.uddcv.SUSCR">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">SUSCR</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to add an underscore to a string.</span>
+
+<span class="sd">    input: string - original string</span>
+
+<span class="sd">    output: string - string with appended underscore</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">uscr</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span> <span class="o">+</span> <span class="n">uscr</span>
+    <span class="k">return</span> <span class="n">string</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Carlos Azua-Gonzalez, KOKOA-ESPOL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
