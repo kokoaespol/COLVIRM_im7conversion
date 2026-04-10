@@ -30,8 +30,8 @@ The structure of the package is as follows:
         ├── rddcv.py
         │   ├── def RDCLI():
         │   └── ...
-        ├── cddcv.py
-        │   ├── def CDMOD(clinpt):
+        ├── cdic_cv_converterddcv.py
+        │   ├── def convert_to_mode(clinpt):
         │   └── ...
         └── uddcv.py
             ├── def SEXIT(error,clinpt):
