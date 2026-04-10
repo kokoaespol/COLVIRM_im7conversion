@@ -35,14 +35,14 @@ def RDCLI():
     minimum_cli = 3
 
     # Extract program name
-    prgnm = uddcv.SNAME(sys.argv)
+    prgnm = uddcv.get_program_name(sys.argv)
     # Show Python version and confirm program running
-    uddcv.SPYVR(sys.version)
-    uddcv.SPGRN(prgnm)
+    uddcv.get_python_version(sys.version)
+    uddcv.print_execution_status(prgnm)
 
     # Check for sufficient input data
     if len(sys.argv) < minimum_cli:
-        error = uddcv.SINDT()
+        error = uddcv.print_missing_inputs()
         return error, sys.argv
 
     return False, sys.argv
@@ -68,8 +68,8 @@ def RINMD(rdmod):
     output: error - boolean indicating if mode is invalid
     """
 
-    error = uddcv.SINMD(rdmod)
-    uddcv.SLRMOD(RMDTP.IMAGE_READING_MODE_TYPES)
+    error = uddcv.print_invalid_mode(rdmod)
+    uddcv.print_supported_modes(RMDTP.IMAGE_READING_MODE_TYPES)
     return error
 
 

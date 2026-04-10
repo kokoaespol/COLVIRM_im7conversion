@@ -14,7 +14,7 @@ Computer Vision analyses.
 
 
 # Function to show exit string
-def SEXIT(error, clinpt):
+def print_progress(error, clinpt):
     """
     Function to print exit message depending on program execution.
 
@@ -23,7 +23,7 @@ def SEXIT(error, clinpt):
 
     output: None
     """
-    prgnm = SNAME(clinpt)
+    prgnm = get_program_name(clinpt)
     if error:
         print(prgnm, "run aborted!")
     else:
@@ -32,7 +32,7 @@ def SEXIT(error, clinpt):
 
 
 # Function to extract python script name
-def SNAME(clinpt):
+def get_program_name(clinpt):
     """
     Function to extract the program name.
 
@@ -45,7 +45,7 @@ def SNAME(clinpt):
 
 
 # Function to show Python version
-def SPYVR(pyvrs):
+def get_python_version(pyvrs):
     """
     Function to display Python version in use.
 
@@ -58,7 +58,7 @@ def SPYVR(pyvrs):
 
 
 # Function to confirm program is running
-def SPGRN(prgnm):
+def print_execution_status(prgnm):
     """
     Function to display that the program is running.
 
@@ -71,7 +71,7 @@ def SPGRN(prgnm):
 
 
 # Function to clarify insufficient input data
-def SINDT():
+def print_missing_inputs():
     """
     Function to show error for insufficient input data.
 
@@ -85,7 +85,7 @@ def SINDT():
 
 
 # Function to output list of supported modes
-def SLRMOD(lspmd):
+def print_supported_modes(lspmd):
     """
     Function to display list of supported modes.
 
@@ -102,7 +102,7 @@ def SLRMOD(lspmd):
 
 
 # Function to confirm invalid reading mode
-def SINMD(rdmod):
+def print_invalid_mode(rdmod):
     """
     Function to show error message for invalid mode.
 
@@ -116,7 +116,7 @@ def SINMD(rdmod):
 
 
 # Function to get im7 file name from cli
-def FNMCL(clinpt):
+def get_im7_filename(clinpt):
     """
     Function to extract .im7 file name from command line input.
 
@@ -125,8 +125,8 @@ def FNMCL(clinpt):
     output: iname  - full image file name with extension
             imname - base image file name without extension
     """
-    LIM7 = FMIM7.LIM7
-    FRIM7 = FMIM7.FRIM7
+    LIM7 = IM7Format.LIM7
+    FRIM7 = IM7Format.FRIM7
     imname = clinpt[2]
     lname = len(imname)
     lim7 = LIM7
@@ -141,7 +141,7 @@ def FNMCL(clinpt):
 
 
 # Class: information of .im7 format
-class FMIM7:
+class IM7Format:
     """
     Class to store .im7 file format information.
     """
@@ -151,7 +151,7 @@ class FMIM7:
 
 
 # Function to detect inexisting file
-def FNFND(iname):
+def is_file_not_found(iname):
     """
     Function to check if a file exists.
 
@@ -172,7 +172,7 @@ def FNFND(iname):
 
 
 # Function to show string of image-level
-def SIMLAY(iname):
+def print_image_processing(iname):
     """
     Function to print messages for image-level operation.
 
@@ -297,21 +297,3 @@ def SUSCR(string):
     uscr = "_"
     string = string + uscr
     return string
-
-
-def XTROI(clinpt):
-    """
-    Function to extract ROI (Region of Interest) coordinates from command line input.
-
-    input:  clinpt - command line input
-
-    output: ROI_x1 - x1-coordinate of the ROI
-            ROI_x2 - x2-coordinate of the ROI
-            ROI_y1 - y1-coordinate of the ROI
-            ROI_y2 - y2-coordinate of the ROI
-    """
-    ROI_x1 = int(clinpt[3])
-    ROI_x2 = int(clinpt[4])
-    ROI_y1 = int(clinpt[5])
-    ROI_y2 = int(clinpt[6])
-    return ROI_x1, ROI_x2, ROI_y1, ROI_y2
