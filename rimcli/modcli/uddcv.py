@@ -267,8 +267,6 @@ def SINAME(imname, imtype, icamr):
     siname = SUSCR(siname)
     siname = siname + sicamr
     return siname
-<<<<<<< HEAD
-=======
 
 
 # Function to confirm image saved
@@ -299,4 +297,21 @@ def SUSCR(string):
     uscr = "_"
     string = string + uscr
     return string
->>>>>>> main
+
+
+def XTROI(clinpt):
+    """
+    Function to extract ROI (Region of Interest) coordinates from command line input.
+
+    input:  clinpt - command line input
+
+    output: ROI_x1 - x1-coordinate of the ROI
+            ROI_x2 - x2-coordinate of the ROI
+            ROI_y1 - y1-coordinate of the ROI
+            ROI_y2 - y2-coordinate of the ROI
+    """
+    ROI_x1 = int(clinpt[3])
+    ROI_x2 = int(clinpt[4])
+    ROI_y1 = int(clinpt[5])
+    ROI_y2 = int(clinpt[6])
+    return ROI_x1, ROI_x2, ROI_y1, ROI_y2
